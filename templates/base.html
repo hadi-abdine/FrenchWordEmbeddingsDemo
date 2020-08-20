@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>
+            {% block title %}Home Page{% endblock %}
+        </title>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">French Word Vectors</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/resources">Resources<span class="sr-only">(current)</span></a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li> -->
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+        
+        </nav>
+
+        {% block content %}
+        <br>
+        <div class="card mb-3 mx-auto" style="max-width: 80rem; border-radius: 25px" >
+            <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px" >Vector Word Representation For The French Language</div>
+            <div class="card-body">
+              <h5 class="card-title">Instructions</h5>
+              <p class="card-text">Below are a few for your initial tests. To see the results you have to write you input first and the press submit. You can also just clock on one of the ready-made options and they will be filled in the form. If you want to give your own words, they must be in lower case and ofcourse in the vocabulary of the word vectors.</p>
+            
+
+              <!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Choose Embeddings
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="embd" id="embd">
+                  <a class="dropdown-item dascim1" href="#">dascim1</a>
+                  <a class="dropdown-item dascim1" href="#">dascim2</a>
+                  <a class="dropdown-item flaubert1" href="#">flaubert1</a>
+                  <a class="dropdown-item flaubert2" href="#">flaubert2</a>
+                </div>
+              </div> -->
+
+            
+            </div>
+        </div>
+        
+
+
+
+        <div class="card mb-3 mx-auto" style="max-width: 80rem; border-radius: 25px" >
+            <div class="card-header text-white bg-success" style="border-top-right-radius: 25px; border-top-left-radius: 25px" >Analogy</div>
+            <div class="card-body">
+              <h5 class="card-title">Linear relation between word vectors</h5>
+              <p class="card-text">Here we see how simple linear operations between word vectors can produce results that make sense.</p>
+              
+              <div class="input-group" style="  display: flex;
+              align-items: center;">
+                <input type="text" class="form-control" placeholder="france" id="word2" name="word2"/>
+                <span class="input-group-addon" >-</span>
+                <input type="text" class="form-control " placeholder="paris" id="word1" name="word1"/>
+                <span class="input-group-addon">+</span>
+                <input name='word3' type="text" class="form-control" placeholder="berlin" id="word3" />
+                <span class="input-group-addon"><p>&#x2192;</p></span>
+                <textarea class="span6 form-control" rows="10" placeholder="allemagne" disabled style="height:100px;" id="word4" name="word4">{{res}}</textarea>
+              </div>
+            
+
+              <input class="btn btn-success analogyBtn" type="submit" value="submit" id='analogy'><br><br>
+            
+
+              <div class="card text-white bg-dark" style="border-radius: 25px">
+                <div class="card-body">
+                  Some more examples you can try:<br>
+                  <a href="#" onclick="document.getElementById('word2').value='france';document.getElementById('word1').value='paris';document.getElementById('word3').value='berlin';">france - paris + berlin</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='père';document.getElementById('word1').value='homme';document.getElementById('word3').value='femme';">père- homme + femme</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='obama';document.getElementById('word1').value='amérique';document.getElementById('word3').value='france';">obama - amérique + france</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='allumé';document.getElementById('word1').value='éteint';document.getElementById('word3').value='court';">allumé - éteint + court</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='europe';document.getElementById('word1').value='euro';document.getElementById('word3').value='dinar';">europe - euro + dinar</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='allant';document.getElementById('word1').value='aller';document.getElementById('word3').value='nager';">allant - aller + nager</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='eu';document.getElementById('word1').value='avoir';document.getElementById('word3').value='boire';">eu - avoir + boire</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='banane';document.getElementById('word1').value='bananes';document.getElementById('word3').value='couleurs';">banane - bananes + couleurs</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='allemagne';document.getElementById('word1').value='allemand';document.getElementById('word3').value='francais';">allemagne - allemand + francais</a><br>
+                  <a href="#" onclick="document.getElementById('word2').value='faisais';document.getElementById('word1').value='faire';document.getElementById('word3').value='suivre';">faisais - faire + suivre</a>
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+
+        <div class="card mb-3 mx-auto" style="max-width: 80rem; border-radius: 25px" >
+            <div class="card-header text-white bg-warning" style="border-top-right-radius: 25px; border-top-left-radius: 25px" >Similarity Score</div>
+            <div class="card-body">
+              <h5 class="card-title">Word difference in vector space</h5>
+              <p class="card-text">The result shows how much the two input words are similar.</p>
+            
+              <div class="input-group" style="  display: flex;
+              align-items: center;">
+                <input type="text" class="form-control" placeholder="important" id="sim1" name="sim1" style="max-width: 20rem;"/>
+                <span class="input-group-addon"><p>&#x2194;</p></span>
+                <input type="text" class="form-control " placeholder="intéressant" id="sim2" name="sim2" style="max-width: 20rem;"/>
+                <span class="input-group-addon"><p>&#x2192;</p></span>
+                <input name='simscore' type="text" class="form-control" placeholder="" id="simscore" disabled style="max-width: 20rem;"/>
+                <input class="btn btn-success simScoreBtn" type="submit" value="submit" id='similarityScore' style="position: absolute; right: 0;"><br><br>
+                
+              </div>
+            
+            </div>
+            
+        </div>
+
+        <div class="card mb-3 mx-auto" style="max-width: 80rem; border-radius: 25px" >
+            <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px" >Most Similar</div>
+            <div class="card-body">
+              <h5 class="card-title">Top 10 most similar words</h5>
+              <p class="card-text">The result displays the 10 closest word vectors to the input word.</p>
+            
+              <div class="input-group" style="  display: flex;
+              align-items: center;">
+                <input name='wordgoal' type="text" class="form-control" placeholder="mot" id="wordgoal" style="max-width: 20rem;"/>
+                <span class="input-group-addon"><p>&#x2192;</p></span>
+                <textarea class="span6 form-control" rows="10" placeholder="" disabled style="height:100px;max-width: 20rem;" id="simwords" name="simwords"></textarea>
+                <input class="btn btn-success simWordsBtn" type="submit" value="submit" id='similarityWords' style="position: absolute; right: 0;"><br><br>
+              </div>
+
+            
+            </div>
+        </div>
+
+        {% endblock %}
+
+        <script src="http://code.jquery.com/jquery.js"></script>
+    
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+        <script src="{{ url_for('static', filename='queries.js') }}"></script>
+    </body>
+</html>

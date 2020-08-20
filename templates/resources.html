@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %} resources {% endblock %}
+{% block content %}  
+
+
+<div class="card mb-3 mx-auto" style="max-width: 80rem; border-radius: 25px" >
+    <!-- <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px" >Vector Word Representation For The French Language</div> -->
+    <div class="card-body">
+      <h1 class="card-title text-green"  style="color:Green;">Production of French language resources</h1>
+      <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+      <p class="card-text">info about the resources</p>
+      <!-- <a href="#" class="card-link">Card link</a> -->
+      <!-- <a href="#" class="card-link">Another link</a> -->
+      <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-embd-tab" data-toggle="pill" href="#pills-embd" role="tab" aria-controls="pills-embd" aria-selected="true">Word Embeddings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-resources-tab" data-toggle="pill" href="#pills-resources" role="tab" aria-controls="pills-resources" aria-selected="false">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-corp-tab" data-toggle="pill" href="#pills-corp" role="tab" aria-controls="pills-corp" aria-selected="false">Raw Corpus</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-uni-tab" data-toggle="pill" href="#pills-uni" role="tab" aria-controls="pills-uni" aria-selected="false">Unigrams</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-bi-tab" data-toggle="pill" href="#pills-bi" role="tab" aria-controls="pills-bi" aria-selected="false">Bigrams</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-tri-tab" data-toggle="pill" href="#pills-tri" role="tab" aria-controls="pills-tri" aria-selected="false">Trigrams</a>
+          </li>
+      </ul>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-embd" role="tabpanel" aria-labelledby="pills-embd-tab">
+
+
+            <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-d1-tab" data-toggle="pill" href="#pills-d1" role="tab" aria-controls="pills-d1" aria-selected="true">fr_w2v_web_w5</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-d2-tab" data-toggle="pill" href="#pills-d2" role="tab" aria-controls="pills-d2" aria-selected="false">fr_w2v_web_w20</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-f1-tab" data-toggle="pill" href="#pills-f1" role="tab" aria-controls="pills-f1" aria-selected="false">fr_w2v_fl_w5</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-f2-tab" data-toggle="pill" href="#pills-f2" role="tab" aria-controls="pills-f2" aria-selected="false">fr_w2v_fl_w20</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-d1" role="tabpanel" aria-labelledby="pills-d1-tab">
+                    <ul>
+                    <li>.vec file : download (add link)</li>
+                    <li>.bin file : download (add link)</li>
+                  </ul></div>
+                <div class="tab-pane fade" id="pills-d2" role="tabpanel" aria-labelledby="pills-d2-tab">
+                    <ul>
+                        <li>.vec file : download (add link)</li>
+                        <li>.bin file : download (add link)</li>
+                      </ul>
+                </div>
+                <div class="tab-pane fade" id="pills-f1" role="tabpanel" aria-labelledby="pills-f1-tab">
+                    <ul>
+                        <li>.vec file : download (add link)</li>
+                        <li>.bin file : download (add link)</li>
+                      </ul>
+                </div>
+                <div class="tab-pane fade" id="pills-f2" role="tabpanel" aria-labelledby="pills-f2-tab">
+                    <ul>
+                        <li>.vec file : download (add link)</li>
+                        <li>.bin file : download (add link)</li>
+                      </ul>
+                </div>
+            </div>
+        
+        </div>
+        <div class="tab-pane fade" id="pills-resources" role="tabpanel" aria-labelledby="pills-resources-tab">to add links </div>
+        <div class="tab-pane fade" id="pills-corp" role="tabpanel" aria-labelledby="pills-corp-tab">...</div>
+        <div class="tab-pane fade" id="pills-uni" role="tabpanel" aria-labelledby="pills-uni-tab">...</div>
+        <div class="tab-pane fade" id="pills-bi" role="tabpanel" aria-labelledby="pills-bi-tab">...</div>
+        <div class="tab-pane fade" id="pills-tri" role="tabpanel" aria-labelledby="pills-tri-tab">...</div>
+
+        if you use these language resources, please site the following paper:
+        <div class="card text-white bg-dark" style="border-radius: 25px">
+            <div class="card-body">
+              
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
