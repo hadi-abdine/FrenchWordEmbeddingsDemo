@@ -6,7 +6,7 @@ from gensim.test.utils import datapath
 
 app = Flask(__name__)
 # modelw2v = gensim.models.Word2Vec.load('word2vec/dascim2.model', mmap='r')
-
+modelw2v = KeyedVectors.load_word2vec_format("../word2vec/dascim2.bin", binary=True, limit=500000) # change to your embeddings
 
 @app.route("/")
 def home():
@@ -25,13 +25,22 @@ def analogy():
     word2 = request.form['word2']
     word3 = request.form.get("word3", False) 
     if word1 not in modelw2v.vocab:
-        res = 'ERROR : the first word is not in the vocabulary'
+        if word1=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the second word is not in the vocabulary'
         return jsonify({'result' : 'success', 'word_4' : res})
     elif word2 not in modelw2v.vocab:
-        res = 'ERROR : the second word is not in the vocabulary'
+        if word2=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the first word is not in the vocabulary'
         return jsonify({'result' : 'success', 'word_4' : res})
     elif word3 not in modelw2v.vocab:
-        res = 'ERROR : the third word is not in the vocabulary'
+        if word3=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the third word is not in the vocabulary'
         return jsonify({'result' : 'success', 'word_4' : res})
     word4 = modelw2v.most_similar(positive=[word2, word3], negative=[word1])
 
@@ -45,10 +54,16 @@ def simscore():
     sim1 = request.form['sim1']
     sim2 = request.form['sim2']
     if sim1 not in modelw2v.wv.vocab:
-        res = 'ERROR : the first word is not in the vocabulary'
+        if sim1=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the first word is not in the vocabulary'
         return jsonify({'result' : 'success', 'simscore' : res})
     elif sim2 not in modelw2v.wv.vocab:
-        res = 'ERROR : the second word is not in the vocabulary'
+        if sim2=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the second word is not in the vocabulary'
         return jsonify({'result' : 'success', 'simscore' : res})
 
     res = str(modelw2v.similarity(sim1, sim2))
@@ -59,7 +74,10 @@ def simscore():
 def simwords():
     wordgoal = request.form['wordgoal']
     if wordgoal not in modelw2v.wv.vocab:
-        res = 'ERROR : the word is not in the vocabulary'
+        if wordgoal=='':
+            res = 'Forgot to write a word?'
+        else:
+            res = 'ERROR : the word is not in the vocabulary'
         return jsonify({'result' : 'success', 'simwords' : res})
     
     print(modelw2v) 
@@ -75,8 +93,6 @@ def simwords():
 
 
 if __name__ == "__main__":
-    global modelw2v
-    modelw2v = KeyedVectors.load_word2vec_format("../word2vec/dascim2.bin", binary=True, limit=2000000) # change to your embeddings
     app.run(debug=True)
 
 
