@@ -1,8 +1,0 @@
-python3
-flask
-gensim
-routes
-cherrypy
-scikit-learn
-routes
-
