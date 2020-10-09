@@ -43242,7 +43242,7 @@
                     React.createElement(
                         'a',
                         {Class: 'navbar-brand', href: '/test'},
-                        'Home'
+                        'French Word Vectors'
                     )
                   ),
     
@@ -43252,7 +43252,7 @@
                     React.createElement(
                       _reactRouter.Link,
                       { to: '/explore' },
-                      'Explore'
+                      'Visual Exploration of Word embeddings'
                     )
                   ),
                   // React.createElement(
