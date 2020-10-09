@@ -43656,7 +43656,7 @@
                   React.createElement(
                     'label',
                     { htmlFor: 'limitInput' },
-                    'Num Clusters:'
+                    'This service is offering a visual exploration of the word embeddings in terms of rendering clusters of words in the neighbourhood of a specific word'
                   )
                 ),
  

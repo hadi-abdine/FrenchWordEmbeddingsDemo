@@ -17,6 +17,7 @@
       grid-template-columns: repeat(auto-fit, 250px 10px);
       grid-template-rows: repeat(auto-fit, 80px);
     }
+
     .container2 {
       display: grid;
       grid-gap: 5px;
@@ -24,6 +25,64 @@
       grid-template-rows: repeat(auto-fit, 80px);
     }
   </style>
+
+  <script type="text/javascript">
+
+    // Wait for the page to load first
+    window.onload = function () {
+      var city = document.getElementById("city");
+      var family = document.getElementById("family");
+      var politics = document.getElementById("politics");
+      var contrary = document.getElementById("contrary");
+      var currency = document.getElementById("currency");
+      var conj1 = document.getElementById("conj1");
+      var conj2 = document.getElementById("conj2");
+      var conj3 = document.getElementById("conj3");
+      var plural = document.getElementById("plural");
+      var language = document.getElementById("language");
+
+      city.onclick = function () {
+        document.getElementById('word2').value = 'france'; document.getElementById('word1').value = 'paris'; document.getElementById('word3').value = 'berlin';
+        return false;
+      }
+      family.onclick = function () {
+        document.getElementById('word2').value = 'père'; document.getElementById('word1').value = 'homme'; document.getElementById('word3').value = 'femme';
+        return false;
+      }
+      politics.onclick = function () {
+        document.getElementById('word2').value = 'obama'; document.getElementById('word1').value = 'amérique'; document.getElementById('word3').value = 'france';
+        return false;
+      }
+      contrary.onclick = function () {
+        document.getElementById('word2').value = 'allumé'; document.getElementById('word1').value = 'éteint'; document.getElementById('word3').value = 'court';
+        return false;
+      }
+      currency.onclick = function () {
+        document.getElementById('word2').value = 'europe'; document.getElementById('word1').value = 'euro'; document.getElementById('word3').value = 'dinar';
+        return false;
+      }
+      conj1.onclick = function () {
+        document.getElementById('word2').value = 'allant'; document.getElementById('word1').value = 'aller'; document.getElementById('word3').value = 'nager';
+        return false;
+      }
+      conj2.onclick = function () {
+        document.getElementById('word2').value = 'eu'; document.getElementById('word1').value = 'avoir'; document.getElementById('word3').value = 'pouvoir';
+        return false;
+      }
+      plural.onclick = function () {
+        document.getElementById('word2').value = 'banane'; document.getElementById('word1').value = 'bananes'; document.getElementById('word3').value = 'couleurs';
+        return false;
+      }
+      language.onclick = function () {
+        document.getElementById('word2').value = 'allemagne'; document.getElementById('word1').value = 'allemand'; document.getElementById('word3').value = 'espanol';
+        return false;
+      }
+      conj3.onclick = function () {
+        document.getElementById('word2').value = 'faisais'; document.getElementById('word1').value = 'faire'; document.getElementById('word3').value = 'suivre';
+        return false;
+      }
+    }
+  </script>
 
 </head>
 
@@ -41,7 +100,7 @@
           <a class="nav-link" href="/test/resources">Resources<span class="sr-only">(current)</span></a>
         </li> -->
         <li class="nav-item active">
-          <a class="nav-link" href="/explore">Graphical Playground</a>
+          <a class="nav-link" href="/explore">Visual Exploration of Word embeddings</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -78,10 +137,21 @@
       Vector Word Representation For The French Language</div>
     <div class="card-body">
       <h5 class="card-title">Instructions</h5>
-      <p class="card-text">Below are a few for your initial tests. To see the results you have to write you input first
-        and the press submit. You can also just clock on one of the ready-made options and they will be filled in the
+      <p class="card-text">Word embeddings are a type of word representation that became very important and widely used
+        in different applications in natural language processing. For instance, pre-trained word embeddings played an
+        important role in achieving an impressive performance with deep learning models on challenging natural language
+        understanding problems.<br>
+        We introduce here the French word vectors of dimension 300 that were trained using Word2Vec CBOW with window
+        size of 20 on a huge 33GB French raw text that we crawled from the French web and performed on multiple
+        pre-processing techniques like French language detection, deduplication and tokenization.<br>
+        Below are a few for your initial tests. To see the results you have to write you input first
+        and the press submit. You can also just click on one of the ready-made options and they will be filled in the
         form. If you want to give your own words, they must be in lower case and ofcourse in the vocabulary of the word
-        vectors.</p>
+        vectors.<br><br>
+        If you are interested in the linguistic resources files please contact the leader of DaSciM group via email: 
+        mvazirg@lix.polytechnique.fr
+
+      </p>
 
 
       <!-- <div class="dropdown">
@@ -135,36 +205,16 @@
       <div class="card text-white bg-dark" style="border-radius: 25px">
         <div class="card-body">
           Some more examples you can try:<br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='france';document.getElementById('word1').value='paris';document.getElementById('word3').value='berlin';">france
-            - paris + berlin</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='père';document.getElementById('word1').value='homme';document.getElementById('word3').value='femme';">père-
-            homme + femme</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='obama';document.getElementById('word1').value='amérique';document.getElementById('word3').value='france';">obama
-            - amérique + france</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='allumé';document.getElementById('word1').value='éteint';document.getElementById('word3').value='court';">allumé
-            - éteint + court</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='europe';document.getElementById('word1').value='euro';document.getElementById('word3').value='dinar';">europe
-            - euro + dinar</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='allant';document.getElementById('word1').value='aller';document.getElementById('word3').value='nager';">allant
-            - aller + nager</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='eu';document.getElementById('word1').value='avoir';document.getElementById('word3').value='pouvoir';">eu
-            - avoir + pouvoir</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='banane';document.getElementById('word1').value='bananes';document.getElementById('word3').value='couleurs';">banane
-            - bananes + couleurs</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='allemagne';document.getElementById('word1').value='allemand';document.getElementById('word3').value='espanol';">allemagne
-            - allemand + espanol</a><br>
-          <a href="#"
-            onclick="document.getElementById('word2').value='faisais';document.getElementById('word1').value='faire';document.getElementById('word3').value='suivre';">faisais
-            - faire + suivre</a>
+          <a id="city" href="#">france - paris + berlin</a><br>
+          <a id="family" href="#">père -homme + femme</a><br>
+          <a id="politics" href="#">obama - amérique + france</a><br>
+          <a id="contrary" href="#">allumé - éteint + court</a><br>
+          <a id="currency" href="#">europe - euro + dinar</a><br>
+          <a id="conj1" href="#">allant - aller + nager</a><br>
+          <a id="conj2" href="#">eu - avoir + pouvoir</a><br>
+          <a id="plural" href="#">banane - bananes + couleurs</a><br>
+          <a id="language" href="#">allemagne - allemand + espanol</a><br>
+          <a id="conj3" href="#">faisais - faire + suivre</a>
         </div>
       </div>
 
@@ -198,7 +248,7 @@
         <input class="btn btn-success simScoreBtn" type="submit" value="submit" id='similarityScore'
           style="position: absolute; right: 10%; "><br><br>
       </div>
-      
+
 
     </div>
 
@@ -224,15 +274,15 @@
       <div>
         <input class="btn btn-success simWordsBtn" type="submit" value="submit" id='similarityWords'
           style="position: absolute; right: 10%;"><br><br>
-      </div>  
-      
+      </div>
+
 
 
     </div>
   </div>
 
   {% endblock %}
-
+  <div style="width:500px; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique</div>
   <script src="{{ url_for('static', filename='jquery.js') }}"></script>
   <script src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
   <script src="{{ url_for('static', filename='fluskQueries.js') }}"></script>
