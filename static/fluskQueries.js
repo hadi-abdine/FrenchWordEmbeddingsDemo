@@ -9,7 +9,7 @@ $(document).ready(function() {
         var word4 = $('#word4').val();
 
         req = $.ajax({
-            url : '/test/analogy',
+            url : '/FrenchWordEmbeddings/analogy',
             type : 'POST',
             data : { word1 : word1, word2 : word2, word3 : word3, word4 : word4}
         });
@@ -31,7 +31,7 @@ $(document).ready(function() {
         var simscore = $('#simscore').val();
 
         req = $.ajax({
-            url : '/test/similarityscore',
+            url : '/FrenchWordEmbeddings/similarityscore',
             type : 'POST',
             data : { sim1 : sim1, sim2 : sim2, simscore : simscore}
         });
@@ -52,7 +52,7 @@ $(document).ready(function() {
         var simwords = $('#simwords').val();
 
         req = $.ajax({
-            url : '/test/similaritywords',
+            url : '/FrenchWordEmbeddings/similaritywords',
             type : 'POST',
             data : { wordgoal : wordgoal, simwords : simwords}
         });

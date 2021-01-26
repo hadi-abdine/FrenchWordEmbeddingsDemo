@@ -82,13 +82,25 @@
         return false;
       }
     }
+
+
+    $(document).ready(function() {
+        $( ".mr-auto .nav-item" ).bind( "click", function(event) {
+            event.preventDefault();
+            var clickedItem = $( this );
+            $( ".mr-auto .nav-item" ).each( function() {
+                $( this ).removeClass( "active" );
+            });
+            clickedItem.addClass( "active" );
+        });
+    });
   </script>
 
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/test">French Word Vectors</a>
+    <a class="navbar-brand" href="/FrenchWordEmbeddings">French Word Vectors</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -96,35 +108,37 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="/test/resources">Resources<span class="sr-only">(current)</span></a>
-        </li> -->
-        <li class="nav-item active">
+        <!-- ------------------------------ -->
+        <li class="nav-item">
+          <a class="nav-link" href="/FrenchWordEmbeddings/resources">Resources<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- ------------------------------- -->
+        <li class="nav-item">
           <a class="nav-link" href="/explore">Visual Exploration of Word embeddings</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Interesting
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="http://archive.aueb.gr:7000/">Greek Word Embeddings</a>
+            <a class="dropdown-item" href="https://github.com/hadi-abdine/FrenchWordEmbeddingsDemo">Source Code</a>
+            <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          </div> -->
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </nav>
 
@@ -137,7 +151,7 @@
       Vector Word Representation For The French Language</div>
     <div class="card-body">
       <h5 class="card-title">Overview</h5>
-      <p class="card-text">Word embeddings are a type of word representation that became very important and widely used
+      <p class="card-text" align="justify">Word embeddings are a type of word representation that became very important and widely used
         in different applications in natural language processing. For instance, pre-trained word embeddings played an
         important role in achieving an impressive performance with deep learning models on challenging natural language
         understanding problems.<br>
@@ -146,26 +160,11 @@
         pre-processing techniques like French language detection, deduplication and tokenization.<br>
         Below are a few for your initial tests. To see the results you have to write your input first
         and then press submit. You can also just click on one of the ready-made examples and they will be filled in the
-        form. If you want to give your own words, they must be in lower case and ofcourse in the vocabulary of the word
-        vectors.<br><br>
-        If you are interested in the linguistic resources files please contact the leader of DaSciM group via email: 
+        form. If you want to give your own words, they must be in the vocabulary of the word vectors.<br><br>
+        If you are interested in downloading the linguistic resources files please contact the leader of DaSciM group via email: 
         mvazirg~lix.polytechnique.fr
 
       </p>
-
-
-      <!-- <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Choose Embeddings
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="embd" id="embd">
-          <a class="dropdown-item dascim1" href="#">dascim1</a>
-          <a class="dropdown-item dascim1" href="#">dascim2</a>
-          <a class="dropdown-item flaubert1" href="#">flaubert1</a>
-          <a class="dropdown-item flaubert2" href="#">flaubert2</a>
-        </div>
-      </div> -->
 
 
     </div>

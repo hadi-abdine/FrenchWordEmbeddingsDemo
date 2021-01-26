@@ -11,7 +11,7 @@ from sklearn.cluster import KMeans
 class Exploration(dict):
 
     def __init__(self, query, labels=[], vectors=[]):
-        self.query = query
+        self.query = query.lower()
         self.parsed_query = {}
         self.labels = labels
         self.vectors = vectors
@@ -118,7 +118,7 @@ class Model(object):
         print('Model#explore query={}, limit={}'.format(query, limit))
         exploration = Exploration(query)
         if len(query):
-            positive, negative = self._parse_query(query)
+            positive, negative = self._parse_query(query.lower())
             exploration.parsed_query['positive'] = positive
             exploration.parsed_query['negative'] = negative
             labels, vectors, distances = self._most_similar_vectors(positive, negative, limit)

@@ -68,10 +68,10 @@ class AppController(object):
 
 if __name__ == '__main__':
     
-    # cherrypy.config.update({
-    #                         'server.socket_port': 5000,
-    #                         'engine.autoreload.on': False,
-    #                         })
+    cherrypy.config.update({
+                            'server.socket_port': 8080,
+                            'engine.autoreload.on': True,
+                            })
 
     api_controller = ApiController()
     api_controller.model = Model('../word2vec/dascim2.bin')
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     dispatch.connect('app', '/:id', controller=app_controller, action="index")
     dispatch.connect('app', '/', controller=app_controller, action="index")
 
-    cherrypy.tree.graft(myflask.wsgi_app, '/test')
+    cherrypy.tree.graft(myflask.wsgi_app, '/FrenchWordEmbeddings')
 
 
     app = cherrypy.tree.mount(None, config={

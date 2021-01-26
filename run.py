@@ -21,9 +21,9 @@ def resources():
 
 @app.route("/analogy", methods=['POST', 'GET'])
 def analogy():
-    word1 = request.form['word1']
-    word2 = request.form['word2']
-    word3 = request.form.get("word3", False) 
+    word1 = request.form['word1'].lower()
+    word2 = request.form['word2'].lower()
+    word3 = request.form.get("word3", False).lower()
     if word1 not in modelw2v.vocab:
         if word1=='':
             res = 'Forgot to write a word?'
@@ -51,8 +51,8 @@ def analogy():
 
 @app.route("/similarityscore", methods=['POST', 'GET'])
 def simscore():
-    sim1 = request.form['sim1']
-    sim2 = request.form['sim2']
+    sim1 = request.form['sim1'].lower()
+    sim2 = request.form['sim2'].lower()
     if sim1 not in modelw2v.wv.vocab:
         if sim1=='':
             res = 'Forgot to write a word?'
@@ -72,7 +72,7 @@ def simscore():
 
 @app.route("/similaritywords", methods=['POST', 'GET'])
 def simwords():
-    wordgoal = request.form['wordgoal']
+    wordgoal = request.form['wordgoal'].lower()
     if wordgoal not in modelw2v.wv.vocab:
         if wordgoal=='':
             res = 'Forgot to write a word?'
@@ -93,6 +93,6 @@ def simwords():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 

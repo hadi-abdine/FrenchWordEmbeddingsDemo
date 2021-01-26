@@ -43241,8 +43241,18 @@
                     { className: 'active test'},
                     React.createElement(
                         'a',
-                        {Class: 'navbar-brand', href: '/test'},
-                        'Home'
+                        {Class: 'navbar-brand', href: '/FrenchWordEmbeddings'},
+                        'French Word Vectors'
+                    )
+                  ),
+
+                  React.createElement(
+                    'li',
+                    { className: 'resources'},
+                    React.createElement(
+                        'a',
+                        {Class: 'navbar-brand', href: '/FrenchWordEmbeddings/resources'},
+                        'Resources'
                     )
                   ),
     
@@ -43252,7 +43262,7 @@
                     React.createElement(
                       _reactRouter.Link,
                       { to: '/explore' },
-                      'Explore'
+                      'Visual Exploration of Word embeddings'
                     )
                   ),
                   // React.createElement(
@@ -43539,11 +43549,11 @@
       explore: function explore() {
         var _this = this;
 
-        var viewOptions = {showLabels: false};//////
         localStorage.scatter2dShowLabels = false;
         // this.refs.scatterPlot2d.setState({viewOptions: viewOptions});///////////////
     
         var params = this.state.params;
+        
         this.setState({ loading: true, error: null });
         Api.request('GET', '/explore', {
           query: params.query,
@@ -43559,10 +43569,25 @@
             });
             _this.refs.mostSimilarList && _this.refs.mostSimilarList.setState({ selected: null });
           }
+
           var loading = false;
-          _this.setState({ error: error, result: result, loading: loading, viewOptions: viewOptions});
+          
+          _this.setState({ error: error, result: result, loading: loading});
+
+          
         });
-    
+        //-----------------------
+        // var viewOptions = {
+        //     showLabels: _this.refs.showLabelsInput.checked
+        //   };
+        //   if (viewOptions.showLabels) {
+        //     delete localStorage.scatter2dShowLabels;
+        //     localStorage.scatter2dShowLabels = 'true';
+        //   } else {
+        //     delete localStorage.scatter2dShowLabels;
+        //   }
+        //   _this.refs.scatterPlot2dElement.setState({viewOptions: viewOptions});
+      // -------------------
       },
       _onDrillDown: function _onDrillDown(params) {
         this.props.onDrillOut(params);
@@ -43656,7 +43681,7 @@
                   React.createElement(
                     'label',
                     { htmlFor: 'limitInput' },
-                    'Num Clusters:'
+                    'This service is offering a visual exploration of the word embeddings in terms of rendering clusters of words in the neighbourhood of a specific word'
                   )
                 ),
  
@@ -43745,7 +43770,7 @@
                 React.createElement('input', {
                   ref: 'showLabelsInput',
                   type: 'checkbox',
-                  defaultValue: 'yes',
+                  defaultValue: true,
                   checked: viewOptions.showLabels,
                   onChange: this._setViewOptions }),
                 ' Show Labels'
@@ -43910,9 +43935,10 @@
     
           if (viewOptions.showLabels) {
             delete localStorage.scatter2dShowLabels;
+            
             localStorage.scatter2dShowLabels = 'true';
             labelNodes = container.selectAll('text.node-label').data(dataset);
-    
+            
             var labelTextSize = this._nominalNodeLabelTextSize();
             if (this._nominalNodeLabelTextSize() * zoom.scale() > this._maxLabelTextSize()) labelTextSize = this._maxLabelTextSize() / zoom.scale();
             console.log('Setting labelTextSize', labelTextSize);
@@ -43925,16 +43951,19 @@
             }).attr('y', function (d) {
               return yScale(d[1]);
             });
-    
+            container.selectAll('text.node-label').remove();
             labelNodes.enter().append('text').attr('class', 'node-label').attr('text-anchor', 'middle').attr('x', function (d) {
               return xScale(d[0]);
             }).attr('y', function (d) {
               return yScale(d[1]);
             }).attr('dy', 0 - this._nodeRadius() - 1.5).style('font-size', labelTextSize + 'px').text(function (d, i) {
+                
               return labels[i];
             });
-    
+            
             labelNodes.exit().remove();
+            
+            
           } else {
             container.selectAll('text.node-label').remove();
           }
@@ -43943,7 +43972,7 @@
           nodes.exit().remove();
     
           // Update X Axis
-          container.select('.x.axis').transition().duration(1000).call(xAxis);
+          container.select('.x.axis').transition().duration(100).call(xAxis);
     
           // Update Y Axis
           container.select('.y.axis').transition().duration(100).call(yAxis);
