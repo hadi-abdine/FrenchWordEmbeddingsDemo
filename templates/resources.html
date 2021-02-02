@@ -63,47 +63,46 @@
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-d1" role="tabpanel" aria-labelledby="pills-d1-tab">
             <p align="justify">French word vectors trained using word2vec CBOW with window size of 5 and minimum word
-              frequency of 60. These vectors are trained on the 33GB deduplicated French raw text collected from the web 
+              frequency of 60. These vectors are trained on the 33GB deduplicated French raw text collected from the web
               and preprocessed in our group.<br>
             </p>
             <ul>
               <!-- <li>.vec file : download (add link)</li> -->
-              <li>binary file: <a
-                  href="https://www.googleapis.com/drive/v3/files/1hs5D1XZAAqg6CdUWGoqO44YL1zCQsI_c?alt=media&key=AIzaSyDjjrSzhCDYWoLav6VQDaUm32i9mjSYg4E">
+              <li>binary file:
+                 <a href="{{ url_for('download_file', filename='dascim1.bin') }}">
                   download</a></li>
             </ul>
           </div>
           <div class="tab-pane fade" id="pills-d2" role="tabpanel" aria-labelledby="pills-d2-tab">
             <p align="justify">French word vectors trained using word2vec CBOW with window size of 20 and minimum word
-              frequency of 5. These vectors are trained on the 33GB deduplicated French raw text collected from the web 
+              frequency of 5. These vectors are trained on the 33GB deduplicated French raw text collected from the web
               and preprocessed in our group. You can test these vectors in this web application.<br>
             </p>
             <ul>
               <!-- <li>.vec file : download (add link)</li> -->
-              <li>binary file: <a
-                  href="https://www.googleapis.com/drive/v3/files/19oroYX5kOZzfHS29mEaki5EUf2_vbVuA?alt=media&key=AIzaSyDjjrSzhCDYWoLav6VQDaUm32i9mjSYg4E">
-                  download</a></li>
+              <li>binary file: <a href="{{ url_for('download_file', filename='dascim2.bin') }}">
+                download</a></li>
             </ul>
           </div>
           <div class="tab-pane fade" id="pills-f1" role="tabpanel" aria-labelledby="pills-f1-tab">
             <p align="justify">French word vectors trained using word2vec CBOW with window size of 5 and minimum word
-              frequency of 60. These vectors are trained on a 33GB shuffled portion of the French corpus used to train FlauBERT.<br>
+              frequency of 60. These vectors are trained on a 33GB shuffled portion of the French corpus used to train
+              FlauBERT.<br>
             </p>
             <ul>
               <!-- <li>.vec file : download (add link)</li> -->
-              <li>binary file: <a
-                  href="https://www.googleapis.com/drive/v3/files/1rxBWqupPzAvngemGUJqpP6Swyn5_aoj9?alt=media&key=AIzaSyDjjrSzhCDYWoLav6VQDaUm32i9mjSYg4E">
+              <li>binary file: <a href="{{ url_for('download_file', filename='flaubert1.bin') }}">
                   download</a></li>
             </ul>
           </div>
           <div class="tab-pane fade" id="pills-f2" role="tabpanel" aria-labelledby="pills-f2-tab">
             <p align="justify">French word vectors trained using word2vec CBOW with window size of 20 and minimum word
-              frequency of 5. These vectors are trained on a 33GB shuffled portion of the French corpus used to train FlauBERT.<br>
+              frequency of 5. These vectors are trained on a 33GB shuffled portion of the French corpus used to train
+              FlauBERT.<br>
             </p>
             <ul>
               <!-- <li>.vec file : download (add link)</li> -->
-              <li>binary file: <a
-                  href="https://www.googleapis.com/drive/v3/files/1N_Q_I7jOEUiqJ6Jr9805Ms_KOIDMoA28?alt=media&key=AIzaSyDjjrSzhCDYWoLav6VQDaUm32i9mjSYg4E">
+              <li>binary file: <a href="{{ url_for('download_file', filename='flaubert2.bin') }}">
                   download</a></li>
             </ul>
           </div>
@@ -115,19 +114,21 @@
         align="justify">
         BARThez is the first french sequence to sequence pretrained model. <br>
         BARThez is pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs using the CNRS
-        Jean Zay supercomputer (<a href="http://www.idris.fr/annonces/annonce-jean-zay-eng.html">
-          http://www.idris.fr/annonces/annonce-jean-zay-eng.html</a>).
-        Our model is based on BART (<a href="https://arxiv.org/abs/1910.13461">https://arxiv.org/abs/1910.13461</a>).
-        Unlike already existing
+        <a href="http://www.idris.fr/annonces/annonce-jean-zay-eng.html">
+          Jean Zay supercomputer</a>.
+        Our model is based on <a href="https://arxiv.org/abs/1910.13461">BART</a>. Unlike already existing
         BERT-based French language models such as CamemBERT and FlauBERT, BARThez is particularly well-suited for
         generative tasks, since not only its encoder but also its decoder is pretrained.
         In addition to BARThez that is pretrained from scratch, we continue the pretraining of a multilingual BART
-        mBART25 (<a href="https://arxiv.org/abs/2001.08210">https://arxiv.org/abs/2001.08210</a>) which boosted its
+        <a href="https://arxiv.org/abs/2001.08210">mBART25</a> which boosted its
         performance in both discriminative and generative tasks. We call the french adapted version mBARThez.
         Our models are competitive to CamemBERT and FlauBERT in discriminative tasks and outperform them in
         generative tasks such as abstractive summarization.<br>
-        Paper: <a href="https://arxiv.org/abs/2010.12321">https://arxiv.org/abs/2010.12321</a><br>
+        Paper: <a href="https://arxiv.org/abs/2010.12321">BARThez: a Skilled Pretrained French Sequence-to-Sequence
+          Model</a><br>
         Github: <a href="https://github.com/moussaKam/BARThez">https://github.com/moussaKam/BARThez</a><br>
+        Our models are now on HuggingFace: <a href="https://huggingface.co/moussaKam/barthez">BARThez</a>,&nbsp; <a
+          href="https://huggingface.co/moussaKam/mbarthez">mBARThez</a><br><br>
       </div>
       <div class="tab-pane fade" id="pills-corp" role="tabpanel" aria-labelledby="pills-corp-tab">
         <ul>
@@ -145,21 +146,19 @@
       <div class="tab-pane fade" id="pills-bi" role="tabpanel" aria-labelledby="pills-bi-tab">...</div>
       <div class="tab-pane fade" id="pills-tri" role="tabpanel" aria-labelledby="pills-tri-tab">...</div> -->
 
-      If you use these language resources, please cite the following papers: 
+      If you use these language resources, please cite the following papers:
       <div class="card text-white bg-dark" style="border-radius: 25px">
-            <div class="card-body">
-              @misc{eddine2020barthez,<br>
-                title={BARThez: a Skilled Pretrained French Sequence-to-Sequence Model}, <br>
-                author={Moussa Kamal Eddine and Antoine J. -P. Tixier and Michalis Vazirgiannis},<br>
-                year={2020},<br>
-                eprint={2010.12321},<br>
-                archivePrefix={arXiv},<br>
-                primaryClass={cs.CL}<br>
-                }
-                <br><br>
-                
-            </div>
+        <div class="card-body">
+          @article{eddine2020barthez,<br>
+          &nbsp; title={BARThez: a Skilled Pretrained French Sequence-to-Sequence Model},<br>
+          &nbsp; author={Eddine, Moussa Kamal and Tixier, Antoine J-P and Vazirgiannis, Michalis},<br>
+          &nbsp; journal={arXiv preprint arXiv:2010.12321},<br>
+          &nbsp; year={2020}<br>
+          }
+          <br><br>
+
         </div>
+      </div>
     </div>
   </div>
 </div>

@@ -46,6 +46,7 @@ $(document).ready(function() {
     });
 
 
+
     $('.simWordsBtn').on('click', function() {
 
         var wordgoal = $('#wordgoal').val();

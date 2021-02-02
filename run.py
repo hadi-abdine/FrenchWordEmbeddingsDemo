@@ -1,12 +1,16 @@
-from flask import Flask, redirect, url_for, render_template, request, jsonify
+from flask import Flask, redirect, url_for, render_template, request, jsonify, send_from_directory
 import gensim
 from gensim.test.utils import get_tmpfile
 from gensim.models import KeyedVectors
 from gensim.test.utils import datapath
+import os
+from flask_htpasswd import HtPasswdAuth
 
 app = Flask(__name__)
-# modelw2v = gensim.models.Word2Vec.load('word2vec/dascim2.model', mmap='r')
-modelw2v = KeyedVectors.load_word2vec_format("../word2vec/dascim2.bin", binary=True, limit=500000) # change to your embeddings
+app.config['FLASK_HTPASSWD_PATH'] = '../word2vec2/demo.htpasswd'
+htpasswd = HtPasswdAuth(app)
+w2vpath = os.path.join(app.root_path, "../word2vec/dascim2.bin")
+modelw2v = KeyedVectors.load_word2vec_format(w2vpath, binary=True, limit=500000) # change to your embeddings
 
 @app.route("/")
 def home():
@@ -18,6 +22,11 @@ def home():
 def resources():
     return render_template("resources.html")
 
+@app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
+@htpasswd.required
+def download_file(filename, user):
+    uploads = os.path.join(app.root_path,'../word2vec2/')
+    return send_from_directory(uploads, filename)
 
 @app.route("/analogy", methods=['POST', 'GET'])
 def analogy():
