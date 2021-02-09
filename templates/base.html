@@ -25,9 +25,9 @@
       grid-template-rows: repeat(auto-fit, 80px);
     }
   </style>
-
+  {% block script %}
   <script type="text/javascript">
-
+    
     // Wait for the page to load first
     window.onload = function () {
       var city = document.getElementById("city");
@@ -84,17 +84,21 @@
     }
 
 
-    $(document).ready(function() {
-        $( ".mr-auto .nav-item" ).bind( "click", function(event) {
-            event.preventDefault();
-            var clickedItem = $( this );
-            $( ".mr-auto .nav-item" ).each( function() {
-                $( this ).removeClass( "active" );
-            });
-            clickedItem.addClass( "active" );
-        });
-    });
+    // $(document).ready(function() {
+    //     $( ".mr-auto .nav-item" ).bind( "click", function(event) {
+    //         event.preventDefault();
+    //         var clickedItem = $( this );
+    //         $( ".mr-auto .nav-item" ).each( function() {
+    //             $( this ).removeClass( "active" );
+    //         });
+    //         clickedItem.addClass( "active" );
+    //     });
+    // });
+    
+    
+    
   </script>
+  {% endblock %}
 
 </head>
 
@@ -162,7 +166,8 @@
         and then press submit. You can also just click on one of the ready-made examples and they will be filled in the
         form. If you want to give your own words, they must be in the vocabulary of the word vectors.<br><br>
         If you are interested in downloading the linguistic resources files please contact the leader of DaSciM group via email: 
-        mvazirg~lix.polytechnique.fr
+        mvazirg~lix.polytechnique.fr<br>
+        This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a>
 
       </p>
 
@@ -279,12 +284,13 @@
 
     </div>
   </div>
-
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='fluskQueries.js') }}"></script>
   {% endblock %}
-  <div style="width:500px; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique</div>
+  <div style="width:500px; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a></div>
   <script src="{{ url_for('static', filename='jquery.js') }}"></script>
   <script src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
-  <script src="{{ url_for('static', filename='fluskQueries.js') }}"></script>
+  
 </body>
 
 </html>

@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 {% block title %} resources {% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='jquery.js') }}" type="text/javascript">
+</script>
+<script type="text/javascript">
+  $(function() {
+      var url = window.location.href;
+      var activeTab = url.substring(url.indexOf("#") + 1);
+      if (activeTab=="barthez"){
+        // $(".tab-pane").removeClass("active");
+        $("#"+activeTab).addClass("active");
+        $('a[href="#'+ activeTab +'"]').tab('show');
+      }
+    });
+</script>
+
+{% endblock %}
 {% block content %}
 
 
@@ -17,25 +34,13 @@
           aria-controls="pills-embd" aria-selected="true">Word Embeddings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pills-resources-tab" data-toggle="pill" href="#pills-resources" role="tab"
-          aria-controls="pills-resources" aria-selected="false">BARThez</a>
+        <a class="nav-link" id="pills-barthez-tab" data-toggle="pill" href="#barthez" role="tab"
+          aria-controls="barthez" aria-selected="false">BARThez</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="pills-corp-tab" data-toggle="pill" href="#pills-corp" role="tab"
           aria-controls="pills-corp" aria-selected="false">N-grams</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" id="pills-uni-tab" data-toggle="pill" href="#pills-uni" role="tab" aria-controls="pills-uni"
-          aria-selected="false">Unigrams</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-bi-tab" data-toggle="pill" href="#pills-bi" role="tab" aria-controls="pills-bi"
-          aria-selected="false">Bigrams</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-tri-tab" data-toggle="pill" href="#pills-tri" role="tab" aria-controls="pills-tri"
-          aria-selected="false">Trigrams</a>
-      </li> -->
     </ul>
 
     <div class="tab-content" id="pills-tabContent">
@@ -61,7 +66,7 @@
           </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-d1" role="tabpanel" aria-labelledby="pills-d1-tab">
+          <div class="tab-pane fade show active in" id="pills-d1" role="tabpanel" aria-labelledby="pills-d1-tab">
             <p align="justify">French word vectors trained using word2vec CBOW with window size of 5 and minimum word
               frequency of 60. These vectors are trained on the 33GB deduplicated French raw text collected from the web
               and preprocessed in our group.<br>
@@ -108,9 +113,9 @@
           </div>
 
         </div>
-
+        The resources are available for academic/non profit use. Interested parties please contact the group leader Prof M. Vazirgiannis mvazirg~lix.polytechnique.fr
       </div>
-      <div class="tab-pane fade" id="pills-resources" role="tabpanel" aria-labelledby="pills-resources-tab"
+      <div class="tab-pane fade" id="barthez" role="tabpanel" aria-labelledby="pills-barthez-tab"
         align="justify">
         BARThez is the first french sequence to sequence pretrained model. <br>
         BARThez is pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs using the CNRS
