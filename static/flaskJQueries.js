@@ -70,6 +70,7 @@ $(document).ready(function() {
     $('.getSummary').on('click', function() {
 
         var fullText = $('#fullText').val();
+        var abstract = $('#abstract').val();
         console.log(fullText);
 
         req = $.ajax({

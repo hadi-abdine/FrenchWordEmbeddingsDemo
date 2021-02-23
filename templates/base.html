@@ -15,7 +15,7 @@
       display: grid;
       grid-gap: 5px;
       grid-template-columns: repeat(auto-fit, 250px 10px);
-      grid-template-rows: repeat(auto-fit, 80px);
+      grid-template-rows: repeat(auto-fit, 150px);
     }
 
     .container2 {
@@ -23,6 +23,14 @@
       grid-gap: 5px;
       grid-template-columns: repeat(auto-fit, 50px);
       grid-template-rows: repeat(auto-fit, 80px);
+    }
+
+    .container3 {
+      display: grid;
+      margin-left: 12%;
+      grid-gap: 5px;
+      grid-template-columns: repeat(auto-fit, 320px 50px);
+      grid-template-rows: repeat(auto-fit, 150px);
     }
   </style>
   {% block script %}
@@ -284,8 +292,36 @@
 
     </div>
   </div>
+
+  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Abstractive Summarization</div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <p class="card-text">This tool takes a French text and produce high quality abstract using our model <a href="/FrenchWordEmbeddings/resources#barthez">BARThez</a>.</p>
+
+      <div class="container3" style="align-items: center;">
+        <textarea name='fullText' class="span6 form-control" rows="20" placeholder="Text" id="fullText"
+          style="height:140px;max-width: 25rem;width: 18rem; left: 50%;"></textarea>
+        <span class="input-group-addon" style="width: 1rem;">
+          <!-- <p>&#x2192;</p> -->
+        </span>
+        <textarea class="span6 form-control" rows="10" placeholder="Abstract" disabled style="height:140px;max-width: 25rem;width: 18rem;"
+          id="abstract" name="abstract"></textarea>
+      </div>
+      <br>
+      <div>
+        <input class="btn btn-success getSummary" type="submit" value="submit" id='getSummary'
+          style="position: absolute; right: 10%;"><br><br>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
   <script src="{{ url_for('static', filename='jquery.js') }}"></script>
-  <script src="{{ url_for('static', filename='fluskQueries.js') }}"></script>
+  <script src="{{ url_for('static', filename='flaskJQueries.js') }}"></script>
   {% endblock %}
   <div style="width:500px; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a></div>
   <script src="{{ url_for('static', filename='jquery.js') }}"></script>

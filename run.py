@@ -5,13 +5,16 @@ from gensim.models import KeyedVectors
 from gensim.test.utils import datapath
 import os
 from flask_htpasswd import HtPasswdAuth
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 app = Flask(__name__)
 app.config['FLASK_HTPASSWD_PATH'] = '../word2vec2/demo.htpasswd'
 htpasswd = HtPasswdAuth(app)
 w2vpath = os.path.join(app.root_path, "../word2vec/dascim2.bin")
 modelw2v = KeyedVectors.load_word2vec_format(w2vpath, binary=True, limit=500000) # change to your embeddings
-
+barthez_tokenizer = AutoTokenizer.from_pretrained("moussaKam/barthez-orangesum-abstract")
+barthez_model = AutoModelForSeq2SeqLM.from_pretrained("moussaKam/barthez-orangesum-abstract")
 @app.route("/")
 def home():
     return render_template("base.html")
@@ -99,6 +102,23 @@ def simwords():
         res = res + word[0] + ', ' + str(round(word[1], 3)) + '\n'
 
     return jsonify({'result' : 'success', 'simwords' : res})
+
+@app.route("/barthez", methods=['POST', 'GET'])
+def getsummary():
+    input_text = request.form['fullText']
+    print(input_text)
+    input_ids = torch.tensor(
+        [barthez_tokenizer.encode(input_text, add_special_tokens=True)]
+    )
+
+    barthez_model.eval()
+    predict = barthez_model.generate(input_ids, max_length=100)[0]
+
+
+    abstract = str(barthez_tokenizer.decode(predict, skip_special_tokens=True))
+
+    return jsonify({'fullText' : input_text, 'abstract' : abstract})
+
 
 
 if __name__ == "__main__":
