@@ -81,7 +81,7 @@ if __name__ == '__main__':
     dispatch.connect('app', '/:id', controller=app_controller, action="index")
     dispatch.connect('app', '/', controller=app_controller, action="index")
 
-    cherrypy.tree.graft(myflask.wsgi_app, '/FrenchWordEmbeddings')
+    cherrypy.tree.graft(myflask.wsgi_app, '/FrenchLinguisticResources')
 
 
     app = cherrypy.tree.mount(None, config={

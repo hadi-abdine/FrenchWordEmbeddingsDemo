@@ -11,6 +11,51 @@
   </title>
 
   <style>
+    *{
+    margin: 0;
+    padding: 0;
+    }
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+    .rate > input {
+        position:absolute;
+        display: none;
+        /* top:-9999px; */
+    }
+    .rate > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:30px;
+        color:#ccc;
+    }
+    .rate > label:before {
+        content: '★ ';
+    }
+    /* .rate > input:checked ~ label {
+        color: #ffc700;    
+    } */
+
+
+    .rate > label:hover,
+    .rate > label:hover ~ label {
+        color: #deb217;  
+    } 
+
+    /* .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label, */
+    /* .rate > label:hover ~ input:checked ~ label { */
+        /* color: #c59b08; */
+        /* color: #deb217;  */
+    /* } */
+
     .container {
       display: grid;
       grid-gap: 5px;
@@ -26,69 +71,27 @@
     }
 
     .container3 {
-      display: grid;
-      margin-left: 12%;
-      grid-gap: 5px;
-      grid-template-columns: repeat(auto-fit, 320px 50px);
-      grid-template-rows: repeat(auto-fit, 150px);
+      display: flex;
+      /* margin-left: 12%; */
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
+
+    
+
+    /* .progress.active .progress-bar {
+        -webkit-transition: none !important;
+        transition: none !important;
+    } */
   </style>
   {% block script %}
   <script type="text/javascript">
-    
+
     // Wait for the page to load first
     window.onload = function () {
-      var city = document.getElementById("city");
-      var family = document.getElementById("family");
-      var politics = document.getElementById("politics");
-      var contrary = document.getElementById("contrary");
-      var currency = document.getElementById("currency");
-      var conj1 = document.getElementById("conj1");
-      var conj2 = document.getElementById("conj2");
-      var conj3 = document.getElementById("conj3");
-      var plural = document.getElementById("plural");
-      var language = document.getElementById("language");
 
-      city.onclick = function () {
-        document.getElementById('word2').value = 'france'; document.getElementById('word1').value = 'paris'; document.getElementById('word3').value = 'berlin';
-        return false;
-      }
-      family.onclick = function () {
-        document.getElementById('word2').value = 'père'; document.getElementById('word1').value = 'homme'; document.getElementById('word3').value = 'femme';
-        return false;
-      }
-      politics.onclick = function () {
-        document.getElementById('word2').value = 'obama'; document.getElementById('word1').value = 'amérique'; document.getElementById('word3').value = 'france';
-        return false;
-      }
-      contrary.onclick = function () {
-        document.getElementById('word2').value = 'allumé'; document.getElementById('word1').value = 'éteint'; document.getElementById('word3').value = 'court';
-        return false;
-      }
-      currency.onclick = function () {
-        document.getElementById('word2').value = 'europe'; document.getElementById('word1').value = 'euro'; document.getElementById('word3').value = 'dinar';
-        return false;
-      }
-      conj1.onclick = function () {
-        document.getElementById('word2').value = 'allant'; document.getElementById('word1').value = 'aller'; document.getElementById('word3').value = 'nager';
-        return false;
-      }
-      conj2.onclick = function () {
-        document.getElementById('word2').value = 'eu'; document.getElementById('word1').value = 'avoir'; document.getElementById('word3').value = 'pouvoir';
-        return false;
-      }
-      plural.onclick = function () {
-        document.getElementById('word2').value = 'banane'; document.getElementById('word1').value = 'bananes'; document.getElementById('word3').value = 'couleurs';
-        return false;
-      }
-      language.onclick = function () {
-        document.getElementById('word2').value = 'allemagne'; document.getElementById('word1').value = 'allemand'; document.getElementById('word3').value = 'espanol';
-        return false;
-      }
-      conj3.onclick = function () {
-        document.getElementById('word2').value = 'faisais'; document.getElementById('word1').value = 'faire'; document.getElementById('word3').value = 'suivre';
-        return false;
-      }
     }
 
 
@@ -102,9 +105,9 @@
     //         clickedItem.addClass( "active" );
     //     });
     // });
-    
-    
-    
+
+
+
   </script>
   {% endblock %}
 
@@ -112,7 +115,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/FrenchWordEmbeddings">French Word Vectors</a>
+    <a class="navbar-brand" href="/FrenchLinguisticResources">French Linguistic Portal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -120,213 +123,87 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- ------------------------------ -->
+
         <li class="nav-item">
-          <a class="nav-link" href="/FrenchWordEmbeddings/resources">Resources<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/FrenchLinguisticResources/barthez">BARThez<span
+              class="sr-only">(current)</span></a>
         </li>
-        <!-- ------------------------------- -->
         <li class="nav-item">
-          <a class="nav-link" href="/explore">Visual Exploration of Word embeddings</a>
+          <a class="nav-link" href="/FrenchLinguisticResources/frWordEmbeddings">Word2Vec<span
+              class="sr-only">(current)</span></a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/explore">Visual Exploration of Word2Vec</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/FrenchLinguisticResources/resources">Resources<span
+              class="sr-only">(current)</span></a>
+        </li>
+
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Interesting
+            More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="http://archive.aueb.gr:7000/">Greek Word Embeddings</a>
             <a class="dropdown-item" href="https://github.com/hadi-abdine/FrenchWordEmbeddingsDemo">Source Code</a>
-            <!-- <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div> -->
+          </div>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
+
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+
     </div>
   </nav>
 
-  </nav>
 
   {% block content %}
   <br>
-  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
-    <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
-      Vector Word Representation For The French Language</div>
-    <div class="card-body">
-      <h5 class="card-title">Overview</h5>
-      <p class="card-text" align="justify">Word embeddings are a type of word representation that became very important and widely used
-        in different applications in natural language processing. For instance, pre-trained word embeddings played an
-        important role in achieving an impressive performance with deep learning models on challenging natural language
-        understanding problems.<br>
-        We introduce here the French word vectors of dimension 300 that were trained using Word2Vec CBOW with window
-        size of 20 on a huge 33GB French raw text that we crawled from the French web and performed on multiple
-        pre-processing techniques like French language detection, deduplication and tokenization.<br>
-        Below are a few for your initial tests. To see the results you have to write your input first
-        and then press submit. You can also just click on one of the ready-made examples and they will be filled in the
-        form. If you want to give your own words, they must be in the vocabulary of the word vectors.<br><br>
-        If you are interested in downloading the linguistic resources files please contact the leader of DaSciM group via email: 
-        mvazirg~lix.polytechnique.fr<br>
-        This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a>
-
-      </p>
-
-
-    </div>
-  </div>
-
-
-
 
   <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
     <div class="card-header text-white bg-success" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
-      Analogy</div>
-    <div class="card-body">
-      <h5 class="card-title">Linear relation between word vectors</h5>
-      <p class="card-text">Here we see how simple linear operations between word vectors can produce results that make
-        sense.</p>
-
-      <div class="container" style="align-items: center;">
-        <input type="text" class="form-control" placeholder="france" id="word2" name="word2" />
-        <span class="input-group-addon">-</span>
-        <input type="text" class="form-control " placeholder="paris" id="word1" name="word1" />
-        <span class="input-group-addon">+</span>
-        <input name='word3' type="text" class="form-control" placeholder="berlin" id="word3" />
-        <span class="input-group-addon">
-          <p>&#x2192;</p>
-        </span>
-        <textarea class="span6 form-control" rows="10" placeholder="allemagne" disabled style="height:100px;" id="word4"
-          name="word4">{{res}}</textarea>
-      </div>
-
-      <br>
-      <div>
-        <input class="btn btn-success analogyBtn" type="submit" value="submit" id='similarityScore'
-          style="position: absolute; right: 10%;"><br><br>
-      </div>
-
-
-      <div class="card text-white bg-dark" style="border-radius: 25px">
-        <div class="card-body">
-          Some more examples you can try:<br>
-          <a id="city" href="#">france - paris + berlin</a><br>
-          <a id="family" href="#">père -homme + femme</a><br>
-          <a id="politics" href="#">obama - amérique + france</a><br>
-          <a id="contrary" href="#">allumé - éteint + court</a><br>
-          <a id="currency" href="#">europe - euro + dinar</a><br>
-          <a id="conj1" href="#">allant - aller + nager</a><br>
-          <a id="conj2" href="#">eu - avoir + pouvoir</a><br>
-          <a id="plural" href="#">banane - bananes + couleurs</a><br>
-          <a id="language" href="#">allemagne - allemand + espanol</a><br>
-          <a id="conj3" href="#">faisais - faire + suivre</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
-    <div class="card-header text-white bg-warning" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
-      Similarity Score</div>
-    <div class="card-body">
-      <h5 class="card-title">Word difference in vector space</h5>
-      <p class="card-text">The result shows how much the two input words are similar.</p>
-
-      <div class="container" style="align-items: center;">
-        <input type="text" class="form-control" placeholder="important" id="sim1" name="sim1"
-          style="max-width: 20rem;" />
-        <span class="input-group-addon">
-          <p>&#x2194;</p>
-        </span>
-        <input type="text" class="form-control " placeholder="intéressant" id="sim2" name="sim2"
-          style="max-width: 20rem;" />
-        <span class="input-group-addon">
-          <p>&#x2192;</p>
-        </span>
-        <input name='simscore' type="text" class="form-control" placeholder="" id="simscore" disabled
-          style="max-width: 20rem;" />
-      </div>
-      <br>
-      <div>
-        <input class="btn btn-success simScoreBtn" type="submit" value="submit" id='similarityScore'
-          style="position: absolute; right: 10%; "><br><br>
-      </div>
-
-
-    </div>
-
-  </div>
-
-  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
-    <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Most
-      Similar</div>
-    <div class="card-body">
-      <h5 class="card-title">Top 10 most similar words</h5>
-      <p class="card-text">The result displays the 10 closest word vectors to the input word.</p>
-
-      <div class="container" style="align-items: center;">
-        <input name='wordgoal' type="text" class="form-control" placeholder="mot" id="wordgoal"
-          style="max-width: 20rem;" />
-        <span class="input-group-addon">
-          <p>&#x2192;</p>
-        </span>
-        <textarea class="span6 form-control" rows="10" placeholder="" disabled style="height:100px;max-width: 20rem;"
-          id="simwords" name="simwords"></textarea>
-      </div>
-      <br>
-      <div>
-        <input class="btn btn-success simWordsBtn" type="submit" value="submit" id='similarityWords'
-          style="position: absolute; right: 10%;"><br><br>
-      </div>
-
-
-
-    </div>
-  </div>
-
-  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
-    <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Abstractive Summarization</div>
+      Large-Scale Linguistic Resources for the French Language</div>
     <div class="card-body">
       <h5 class="card-title"></h5>
-      <p class="card-text">This tool takes a French text and produce high quality abstract using our model <a href="/FrenchWordEmbeddings/resources#barthez">BARThez</a>.</p>
+      <p class="card-text" align="justify">
+        Word embeddings are a type of word representation that became very important
+        and widely used
+        in different applications in natural language processing. For instance, pre-trained word embeddings played an
+        important role in achieving an impressive performance with deep learning models on challenging natural language
+        understanding problems.<br><br>
+        We introduce <a href="/FrenchLinguisticResources/barthez">BARthez</a>, the first french sequence to sequence
+        pretrained model pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs.<br>
+        We also introduce  the French <a href="/FrenchLinguisticResources/frWordEmbeddings">Word2vec</a>  vectors of
+        dimension 300 that were trained using CBOW on a huge 33GB French raw text that we crawled and pre-processed
+        from the French web.<br><br>
 
-      <div class="container3" style="align-items: center;">
-        <textarea name='fullText' class="span6 form-control" rows="20" placeholder="Text" id="fullText"
-          style="height:140px;max-width: 25rem;width: 18rem; left: 50%;"></textarea>
-        <span class="input-group-addon" style="width: 1rem;">
-          <!-- <p>&#x2192;</p> -->
-        </span>
-        <textarea class="span6 form-control" rows="10" placeholder="Abstract" disabled style="height:140px;max-width: 25rem;width: 18rem;"
-          id="abstract" name="abstract"></textarea>
-      </div>
-      <br>
-      <div>
-        <input class="btn btn-success getSummary" type="submit" value="submit" id='getSummary'
-          style="position: absolute; right: 10%;"><br><br>
-      </div>
+        If you are interested in downloading the linguistic resources files please contact the leader of DaSciM group
+        via email:
+        mvazirg~lix.polytechnique.fr<br>
+        This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS
+          chair</a>
 
-
-
+      </p>
     </div>
   </div>
-
-
-  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
-  <script src="{{ url_for('static', filename='flaskJQueries.js') }}"></script>
+  <br><br><br><br><br><br>
+  <center>
+    <a href="http://www.lix.polytechnique.fr/dascim/">
+  <img align="middle" src="{{url_for('static', filename='images/logo_dascim.png')}}"  alt="dascim" style="width: 21rem; height: 5rem; vertical-align: middle;">
+    </a>
+    &nbsp;&nbsp; 
+    <img align="middle" src="{{url_for('static', filename='images/logo-lix.png')}}"  alt="lix" style="width: 5rem; height: 5rem; vertical-align: middle;">
+  </center>
   {% endblock %}
-  <div style="width:500px; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a></div>
-  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <div style="width:80%; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported
+    by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a></div>
+
+  <!-- <script src="{{ url_for('static', filename='JQuery.js') }}"></script> -->
   <script src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
-  
+
 </body>
 
 </html>

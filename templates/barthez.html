@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block title %}BARThez Demo{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+<br>
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+  <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+    BARThez: a Skilled Pretrained French Sequence-to-Sequence Model </div>
+  <div class="card-body">
+    <h5 class="card-title">Overview</h5>
+    <p class="card-text" align="justify">
+      BARThez is the first french sequence to sequence pretrained model. <br>
+      BARThez is pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs using the CNRS
+      <a href="http://www.idris.fr/annonces/annonce-jean-zay-eng.html">
+        Jean Zay supercomputer</a>.
+      Our model is based on <a href="https://arxiv.org/abs/1910.13461">BART</a>. Unlike already existing
+      BERT-based French language models such as CamemBERT and FlauBERT, BARThez is particularly well-suited for
+      generative tasks, since not only its encoder but also its decoder is pretrained.
+      In addition to BARThez that is pretrained from scratch, we continue the pretraining of a multilingual BART
+      <a href="https://arxiv.org/abs/2001.08210">mBART25</a> which boosted its
+      performance in both discriminative and generative tasks. We call the french adapted version mBARThez.
+      Our models are competitive to CamemBERT and FlauBERT in discriminative tasks and outperform them in
+      generative tasks such as abstractive summarization.<br>
+      Paper: <a href="https://arxiv.org/abs/2010.12321">BARThez: a Skilled Pretrained French Sequence-to-Sequence
+        Model</a><br>
+      Github: <a href="https://github.com/moussaKam/BARThez">https://github.com/moussaKam/BARThez</a><br>
+      Our models are now on HuggingFace: <a href="https://huggingface.co/moussaKam/barthez">BARThez</a>,&nbsp; <a
+        href="https://huggingface.co/moussaKam/mbarthez">mBARThez</a><br>
+
+      Below are a few for your initial tests. To see the results you have to write your input text first
+      and then press submit.<br><br>
+
+      This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a>
+
+    </p>
+
+
+  </div>
+</div>
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+  <div class="card-header text-white bg-success" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+    Abstractive Summarization</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">This tool takes a French text and produce high quality abstract using <a
+        href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
+
+    <div class="container3" style="align-items: center;">
+        <textarea name='text_input1' class="span6 form-control" rows="20"  id="text_input1"
+          style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux</textarea>
+
+      <textarea class="span6 form-control dcopy" rows="10" placeholder="Abstract" 
+        style="height:140px;max-width: 25rem;width: 18rem;" id="abstract_output" ></textarea>
+      <div class="rating" style="display: none;"> <label>Please rate this abstract</label><br> 
+        <div class="rate">
+          <input class = "star5" type="button" id="star5" name="rate" value="5" UpdateMode="Conditional" onsubmit="return false"/>
+          <label for="star5" title="5 stars">5 stars</label>
+          <input class = "star4" type="button" id="star4" name="rate" value="4" UpdateMode="Conditional"/>
+          <label for="star4" title="4 stars">4 stars</label>
+          <input class = "star3" type="button" id="star3" name="rate" value="3" UpdateMode="Conditional"/>
+          <label for="star3" title="3 stars">3 stars</label>
+          <input class = "star2" type="button" id="star2" name="rate" value="2" />
+          <label for="star2" title="2 stars">2 stars</label>
+          <input class = "star1" type="button" id="star1" name="rate" value="1" />
+          <label for="star1" title="1 star">1 star</label>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <input class="btn btn-success get_summary" type="submit" value="submit" id='get_summary'
+        style="position: absolute; right: 10%;"><br><br>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+  <div class="card-header text-white bg-warning" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Title
+    Generation</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">This tool takes a French text and generate a title for it using <a
+        href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
+
+    <div class="container3" style="align-items: center;" method="POST">
+      <textarea name='text_input2' class="span6 form-control" rows="20" id="text_input2"
+        style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux</textarea>
+
+      <textarea class="span6 form-control" rows="10" placeholder="Title" 
+        style="height:140px;max-width: 25rem;width: 18rem;" id="title_output" name="title_output"></textarea>
+        <div class="ratingTitle" style="display: none;"> <label>Please rate this title</label> <br>
+          <div class="rate">
+            <input type="radio" id="star5t" name="rate" value="5" />
+            <label for="star5t" title="5 stars">5 stars</label>
+            <input type="radio" id="star4t" name="rate" value="4" />
+            <label for="star4t" title="4 stars">4 stars</label>
+            <input type="radio" id="star3t" name="rate" value="3" />
+            <label for="star3t" title="3 stars">3 stars</label>
+            <input type="radio" id="star2t" name="rate" value="2" />
+            <label for="star2t" title="2 stars">2 stars</label>
+            <input type="radio" id="star1t" name="rate" value="1" />
+            <label for="star1t" title="1 star">1 star</label>
+          </div>
+          </div>
+    </div>
+    <br>
+    <div>
+      <input class="btn btn-success get_title" type="submit" value="submit" id='get_title'
+        style="position: absolute; right: 10%;"><br><br>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+  <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Sentiment Classification</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">This tool takes a French comment and give if it is positive or negative using <a
+        href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
+
+    <div class="container3" style="align-items: center;" method="POST">
+      <textarea name='text_input3' class="span6 form-control" rows="20" id="text_input3"
+        style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Barthez est le meilleur gardien du monde.</textarea>
+      <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+      <div style="width: 18rem;">
+        <div class="col-xs-12 col-sm-12 progress-container">
+          <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success posi"
+              style="width:0%; -webkit-transition: none !important; transition: none !important;" 
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle;" id="poslabel">Positive</label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 progress-container">
+          <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger negi"
+              style="width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle;" id="neglabel">Negative</label>
+        </div>
+
+      </div>
+      <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+    </div>
+    <br>
+    <div>
+      <input class="btn btn-success get_scores" type="submit" value="submit" id='get_scores'
+        style="position: absolute; right: 10%;"><br><br>
+    </div>
+  </div>
+</div>
+
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+  <div class="card-header text-white bg-danger" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Masked Language Model</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">This tool takes a French sentence that contains a mask and predict it using <a
+        href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p><br><br>
+
+    <div class="container3" style="align-items: center;" method="POST">
+      <textarea name='text_input4' class="span6 form-control" rows="20"  id="text_input4"
+        style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Paris est la capitale de la &lt;mask&gt;.</textarea>
+      <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+      <div style="width: 18rem;">
+        <div class="col-xs-12 col-sm-12 progress-container">
+          <div class="progress progress-striped active" style="height:5px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info w1"
+              style="height: 4px; width:0%; -webkit-transition: none !important; transition: none !important;  " 
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle; font-size: 12px;" id="l1"></label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 progress-container">
+          <div class="progress progress-striped active" style="height:5px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info w2"
+              style="height: 4px; width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle; font-size: 12px;" id="l2"></label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 progress-container" >
+          <div class="progress progress-striped active" style="height:5px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info w3"
+              style="height: 4px; width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle; font-size: 12px;" id="l3"></label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 progress-container" >
+          <div class="progress progress-striped active" style="height:5px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info w4"
+              style="height: 4px; width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle; font-size: 12px;" id="l4"></label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 progress-container" >
+          <div class="progress progress-striped active" style="height:5px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info w5"
+              style="height: 4px; width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+          </div>
+          <label style="display: flex; vertical-align: middle; font-size: 12px;" id="l5"></label>
+        </div>
+
+      </div>
+      <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+    </div>
+    <br>
+    <div>
+      <input class="btn btn-success get_words" type="submit" value="submit" id='get_words'
+        style="position: absolute; right: 10%;"><br><br>
+    </div>
+  </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='JQuery.js') }}"></script>
+<script src="{{ url_for('static', filename='flaskJQueriesb31.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block title %}French Word Embeddings Demo{% endblock %}
+
+{% block script %}
+  <script type="text/javascript">
+    
+    // Wait for the page to load first
+    window.onload = function () {
+      var city = document.getElementById("city");
+      var family = document.getElementById("family");
+      var politics = document.getElementById("politics");
+      var contrary = document.getElementById("contrary");
+      var currency = document.getElementById("currency");
+      var conj1 = document.getElementById("conj1");
+      var conj2 = document.getElementById("conj2");
+      var conj3 = document.getElementById("conj3");
+      var plural = document.getElementById("plural");
+      var language = document.getElementById("language");
+
+      city.onclick = function () {
+        document.getElementById('word2').value = 'france'; document.getElementById('word1').value = 'paris'; document.getElementById('word3').value = 'berlin';
+        return false;
+      }
+      family.onclick = function () {
+        document.getElementById('word2').value = 'père'; document.getElementById('word1').value = 'homme'; document.getElementById('word3').value = 'femme';
+        return false;
+      }
+      politics.onclick = function () {
+        document.getElementById('word2').value = 'obama'; document.getElementById('word1').value = 'amérique'; document.getElementById('word3').value = 'france';
+        return false;
+      }
+      contrary.onclick = function () {
+        document.getElementById('word2').value = 'allumé'; document.getElementById('word1').value = 'éteint'; document.getElementById('word3').value = 'court';
+        return false;
+      }
+      currency.onclick = function () {
+        document.getElementById('word2').value = 'europe'; document.getElementById('word1').value = 'euro'; document.getElementById('word3').value = 'dinar';
+        return false;
+      }
+      conj1.onclick = function () {
+        document.getElementById('word2').value = 'allant'; document.getElementById('word1').value = 'aller'; document.getElementById('word3').value = 'nager';
+        return false;
+      }
+      conj2.onclick = function () {
+        document.getElementById('word2').value = 'eu'; document.getElementById('word1').value = 'avoir'; document.getElementById('word3').value = 'pouvoir';
+        return false;
+      }
+      plural.onclick = function () {
+        document.getElementById('word2').value = 'banane'; document.getElementById('word1').value = 'bananes'; document.getElementById('word3').value = 'couleurs';
+        return false;
+      }
+      language.onclick = function () {
+        document.getElementById('word2').value = 'allemagne'; document.getElementById('word1').value = 'allemand'; document.getElementById('word3').value = 'espanol';
+        return false;
+      }
+      conj3.onclick = function () {
+        document.getElementById('word2').value = 'faisais'; document.getElementById('word1').value = 'faire'; document.getElementById('word3').value = 'suivre';
+        return false;
+      }
+    }
+
+  </script>
+{% endblock %}
+
+
+
+{% block content %}
+  <br>
+  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+      Vector Word Representation For The French Language</div>
+    <div class="card-body">
+      <h5 class="card-title">Overview</h5>
+      <p class="card-text" align="justify">Word embeddings are a type of word representation that became very important and widely used
+        in different applications in natural language processing. For instance, pre-trained word embeddings played an
+        important role in achieving an impressive performance with deep learning models on challenging natural language
+        understanding problems.<br>
+        We introduce here the French word vectors of dimension 300 that were trained using Word2Vec CBOW with window
+        size of 20 on a huge 33GB French raw text that we crawled from the French web and performed on multiple
+        pre-processing techniques like French language detection, deduplication and tokenization.<br>
+        Below are a few for your initial tests. To see the results you have to write your input first
+        and then press submit. You can also just click on one of the ready-made examples and they will be filled in the
+        form. If you want to give your own words, they must be in the vocabulary of the word vectors.<br><br>
+        If you are interested in <a href="/FrenchLinguisticResources/resources#pills-embd">downloading the linguistic resources</a> files please contact the leader of DaSciM group via email: 
+        mvazirg~lix.polytechnique.fr<br>
+        This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a>
+
+      </p>
+
+
+    </div>
+  </div>
+
+
+
+
+  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-success" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+      Analogy</div>
+    <div class="card-body">
+      <h5 class="card-title">Linear relation between word vectors</h5>
+      <p class="card-text">Here we see how simple linear operations between word vectors can produce results that make
+        sense.</p>
+
+      <div class="container3" style="align-items: center;">
+        <input type="text" class="form-control" placeholder="france" id="word2" name="word2" style="max-width: 15rem;"/>
+        <span class="input-group-addon" style="width: 1rem;">-</span>
+        <input type="text" class="form-control " placeholder="paris" id="word1" name="word1" style="max-width: 15rem;"/>
+        <span class="input-group-addon" style="width: 1rem;">+</span>
+        <input name='word3' type="text" class="form-control" placeholder="berlin" id="word3" style="max-width: 15rem;"/>
+        <span class="input-group-addon" style="width: 1rem;">
+          <p>&#x2192;</p>
+        </span>
+        <textarea class="span6 form-control" rows="10" placeholder="allemagne" disabled style="height:100px; max-width: 15rem;" id="word4" name="word4">
+          {{res}}</textarea>
+        <span class="input-group-addon" style="width: 1rem;">&nbsp;</span>
+      </div>
+
+      <br>
+      <div>
+        <input class="btn btn-success analogyBtn" type="submit" value="submit" id='similarityScore'
+          style="position: absolute; right: 10%;"><br><br>
+      </div>
+
+
+      <div class="card text-white bg-dark" style="border-radius: 25px">
+        <div class="card-body">
+          Some more examples you can try:<br>
+          <a id="city" href="#">france - paris + berlin</a><br>
+          <a id="family" href="#">père -homme + femme</a><br>
+          <a id="politics" href="#">obama - amérique + france</a><br>
+          <a id="contrary" href="#">allumé - éteint + court</a><br>
+          <a id="currency" href="#">europe - euro + dinar</a><br>
+          <a id="conj1" href="#">allant - aller + nager</a><br>
+          <a id="conj2" href="#">eu - avoir + pouvoir</a><br>
+          <a id="plural" href="#">banane - bananes + couleurs</a><br>
+          <a id="language" href="#">allemagne - allemand + espanol</a><br>
+          <a id="conj3" href="#">faisais - faire + suivre</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-warning" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+      Similarity Score</div>
+    <div class="card-body">
+      <h5 class="card-title">Word difference in vector space</h5>
+      <p class="card-text">The result shows how much the two input words are similar.</p>
+
+      <div class="container3" style="align-items: center;">
+        <input type="text" class="form-control" placeholder="important" id="sim1" name="sim1"
+          style="max-width: 20rem;" />
+        <span class="input-group-addon" style="width: qrem;">
+          <p>&#x2194;</p>
+        </span>
+        <input type="text" class="form-control " placeholder="intéressant" id="sim2" name="sim2"
+          style="max-width: 20rem;" />
+        <span class="input-group-addon" style="width: 1rem;">
+          <p>&#x2192;</p>
+        </span>
+        <input name='simscore' type="text" class="form-control" placeholder="" id="simscore" disabled
+          style="max-width: 20rem;" />
+          <span class="input-group-addon" style="width: 1rem;">&nbsp;</span>
+      </div>
+      <br>
+      <div>
+        <input class="btn btn-success simScoreBtn" type="submit" value="submit" id='similarityScore'
+          style="position: absolute; right: 10%; "><br><br>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">Most
+      Similar</div>
+    <div class="card-body">
+      <h5 class="card-title">Top 10 most similar words</h5>
+      <p class="card-text">The result displays the 10 closest word vectors to the input word.</p>
+
+      <div class="container3" style="align-items: center;">
+        <input name='wordgoal' type="text" class="form-control" placeholder="mot" id="wordgoal"
+          style="max-width: 20rem;" />
+        <span class="input-group-addon" style="width: 1rem;">
+          <p>&#x2192;</p>
+        </span>
+        <textarea class="span6 form-control" rows="10" placeholder="" disabled style="height:100px;max-width: 20rem;"
+          id="simwords" name="simwords"></textarea>
+        <span class="input-group-addon" style="width: 1rem;">&nbsp;</span>
+      </div>
+      <br>
+      <div>
+        <input class="btn btn-success simWordsBtn" type="submit" value="submit" id='similarityWords'
+          style="position: absolute; right: 10%;"><br><br>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='JQuery.js') }}"></script>
+  <script src="{{ url_for('static', filename='flaskJQueries.js') }}"></script>
+{% endblock %}

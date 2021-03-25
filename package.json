@@ -34,6 +34,7 @@
     "d3": "3.5.16",
     "history": "1.17.0",
     "jquery": "2.2.0",
+    "node-js": "^1.0.0",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-router": "1.0.3",

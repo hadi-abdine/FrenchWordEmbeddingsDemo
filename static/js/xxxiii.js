@@ -43216,7 +43216,7 @@
               { className: 'container-fluid' },
               React.createElement(
                 'div',
-                { className: 'navbar-header bg-success' },
+                { className: 'navbar-header navbar-dark bg-dark' },
                 React.createElement(
                   'button',
                   { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
@@ -43241,8 +43241,37 @@
                     { className: 'active test'},
                     React.createElement(
                         'a',
-                        {Class: 'navbar-brand', href: '/FrenchWordEmbeddings'},
-                        'French Word Vectors'
+                        {Class: 'navbar-brand', href: '/FrenchLinguisticResources'},
+                        'French Linguistic Portal'
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    { className: 'barthez'},
+                    React.createElement(
+                        'a',
+                        {Class: 'navbar-brand', href: '/FrenchLinguisticResources/barthez'},
+                        'BARThez'
+                    )
+                  ),
+                  React.createElement(
+                    'li',
+                    { className: 'frWordEmbeddings'},
+                    React.createElement(
+                        'a',
+                        {Class: 'navbar-brand', href: '/FrenchLinguisticResources/frWordEmbeddings'},
+                        'Word2Vec'
+                    )
+                  ),
+
+    
+                  React.createElement(
+                    'li',
+                    { className: 'explore' },
+                    React.createElement(
+                      _reactRouter.Link,
+                      { to: '/explore' },
+                      'Visual Exploration of Word2Vec'
                     )
                   ),
 
@@ -43251,18 +43280,8 @@
                     { className: 'resources'},
                     React.createElement(
                         'a',
-                        {Class: 'navbar-brand', href: '/FrenchWordEmbeddings/resources'},
+                        {Class: 'navbar-brand', href: '/FrenchLinguisticResources/resources'},
                         'Resources'
-                    )
-                  ),
-    
-                  React.createElement(
-                    'li',
-                    { className: 'explore' },
-                    React.createElement(
-                      _reactRouter.Link,
-                      { to: '/explore' },
-                      'Visual Exploration of Word embeddings'
                     )
                   ),
                   // React.createElement(
