@@ -2,15 +2,15 @@
 <html>
 
 <head>
-  <meta content='width=device-width, initial-scale=1' name='viewport' />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <title>
-    {% block title %}Home Page{% endblock %}
-  </title>
+    <title>
+        {% block title %}Home Page{% endblock %}
+    </title>
 
-  <style>
+    <style>
     *{
     margin: 0;
     padding: 0;
@@ -85,9 +85,10 @@
         -webkit-transition: none !important;
         transition: none !important;
     } */
-  </style>
-  {% block script %}
-  <script type="text/javascript">
+
+    </style>
+    {% block script %}
+    <script type="text/javascript">
 
     // Wait for the page to load first
     window.onload = function () {
@@ -108,101 +109,126 @@
 
 
 
-  </script>
-  {% endblock %}
+
+    </script>
+    {% endblock %}
 
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
     <a class="navbar-brand" href="/FrenchLinguisticResources">French Linguistic Portal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" href="/FrenchLinguisticResources/barthez">BARThez<span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/FrenchLinguisticResources/frWordEmbeddings">Word2Vec<span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/explore">Visual Exploration of Word2Vec</a>
-        </li>
+        <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" href="/FrenchLinguisticResources/resources">Resources<span
-              class="sr-only">(current)</span></a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/FrenchLinguisticResources/barthez">BARThez<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/FrenchLinguisticResources/frWordEmbeddings">Word2Vec<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/explore">Visual Exploration of Word2Vec</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/FrenchLinguisticResources/resources">Resources<span
+                        class="sr-only">(current)</span></a>
+            </li>
 
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="http://archive.aueb.gr:7000/">Greek Word Embeddings</a>
+                    <a class="dropdown-item" href="https://github.com/hadi-abdine/FrenchWordEmbeddingsDemo">Source
+                        Code</a>
+                </div>
+            </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="http://archive.aueb.gr:7000/">Greek Word Embeddings</a>
-            <a class="dropdown-item" href="https://github.com/hadi-abdine/FrenchWordEmbeddingsDemo">Source Code</a>
-          </div>
-        </li>
-
-      </ul>
+        </ul>
 
     </div>
-  </nav>
+</nav>
 
 
-  {% block content %}
-  <br>
+{% block content %}
+<br>
 
-  <div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
     <div class="card-header text-white bg-success" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
-      Large-Scale Linguistic Resources for the French Language</div>
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text" align="justify">
-        Word embeddings are a type of word representation that became very important
-        and widely used
-        in different applications in natural language processing. For instance, pre-trained word embeddings played an
-        important role in achieving an impressive performance with deep learning models on challenging natural language
-        understanding problems.<br><br>
-        We introduce <a href="/FrenchLinguisticResources/barthez">BARthez</a>, the first french sequence to sequence
-        pretrained model pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs.<br>
-        We also introduce  the French <a href="/FrenchLinguisticResources/frWordEmbeddings">Word2vec</a>  vectors of
-        dimension 300 that were trained using CBOW on a huge 33GB French raw text that we crawled and pre-processed
-        from the French web.<br><br>
-
-        If you are interested in downloading the linguistic resources files please contact the leader of DaSciM group
-        via email:
-        mvazirg~lix.polytechnique.fr<br>
-        This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS
-          chair</a>
-
-      </p>
+        Large-Scale Linguistic Resources for the French Language
     </div>
-  </div>
-  <br><br><br><br><br><br>
-  <center>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text" align="justify">
+
+
+            French is one of the most important languages worldwide with long history and contributions to world culture
+            and civilization.<br>
+
+            In the last decade, the presence of unprecedented amounts of digital text online and also deep learning
+            methods have changed NLP and text mining, new representations and methods enable tasks beyond the
+            traditional supervised ones (i.e. document classification, opinion mining) in natural language processing
+            problems such as summarization, language generation, author/style identification etc.<br>
+
+            Training on vast amounts of data, new representations are learned - static and contextual embeddings
+            representing linguistic elements in a vector space. These embeddings are very important and widely used in
+            different applications in natural language processing.<br>
+
+            In this portal we present and make available to the research and industrial community French linguistic
+            resources of high scale and quality for different tasks result of training on very large quantities of
+            online text collected (by our group as well) from the Web. Soon we will integrate similar resources for
+            other languages.<br>
+
+            We introduce <a href="/FrenchLinguisticResources/barthez">BARthez</a>, the first french sequence to sequence
+            pretrained model pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs.<br>
+            We also introduce the French <a href="/FrenchLinguisticResources/frWordEmbeddings">Word2vec</a> vectors of
+            dimension 300 that were trained using CBOW on a huge 33GB French raw text that we crawled and pre-processed
+            from the French web.<br><br>
+
+            If you are interested in downloading the linguistic resources files please contact the leader of DaSciM
+            group via email: mvazirg~lix.polytechnique.fr
+            This effort is partially funded by the ANR HELAS chair
+
+            If you are interested in downloading the linguistic resources files please contact the leader of DaSciM
+            group
+            via email:
+            mvazirg~lix.polytechnique.fr<br>
+            This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS
+            chair</a>
+
+        </p>
+    </div>
+</div>
+<br><br><br><br><br><br>
+<center>
     <a href="http://www.lix.polytechnique.fr/dascim/">
-  <img align="middle" src="{{url_for('static', filename='images/logo_dascim.png')}}"  alt="dascim" style="width: 21rem; height: 5rem; vertical-align: middle;">
+        <img align="middle" src="{{url_for('static', filename='images/logo_dascim.png')}}" alt="dascim"
+             style="width: 21rem; height: 5rem; vertical-align: middle;">
     </a>
-    &nbsp;&nbsp; 
-    <img align="middle" src="{{url_for('static', filename='images/logo-lix.png')}}"  alt="lix" style="width: 5rem; height: 5rem; vertical-align: middle;">
-  </center>
-  {% endblock %}
-  <div style="width:80%; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported
+    &nbsp;&nbsp;
+    <img align="middle" src="{{url_for('static', filename='images/logo-lix.png')}}" alt="lix"
+         style="width: 5rem; height: 5rem; vertical-align: middle;">
+</center>
+{% endblock %}
+<div style="width:80%; margin:0 auto; text-align: center;">Developed by DaSciM@LIX - Ecole Polytechnique, supported
     by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS chair</a></div>
 
-  <!-- <script src="{{ url_for('static', filename='JQuery.js') }}"></script> -->
-  <script src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='JQuery.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
 
 </body>
 
