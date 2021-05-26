@@ -1,0 +1,9 @@
+torch
+transformers
+pandas
+cherrypy
+gensim
+sklearn
+flask
+flask_htpasswd
+routes
