@@ -21,7 +21,7 @@ This UI is built using React, JavaScript, JQuery and Bootstrap.
 ### Setup
 To install NPM dependencies:
 ```ruby
-nmp install
+npm install
 ```
 To install all python dependencies:
 ```ruby
