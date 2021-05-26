@@ -1,11 +1,12 @@
 # Linguistic Resources Portal <a href="http://master2-bigdata.polytechnique.fr/"><img width="10%" src='https://drive.google.com/uc?export=view&id=1n43FYop0Ea7pQA77YwCo-0k2XbGaC6rD'></a>
 
 In this [portal](http://master2-bigdata.polytechnique.fr/) we present and make available to the research and industrial community French linguistic resources of high scale and quality for different tasks result of training on very large quantities of online text collected (by our group as well) from the Web. Soon we will integrate similar resources for other languages.
-We introduce [BARthez](http://master2-bigdata.polytechnique.fr/FrenchLinguisticResources/barthez), the first french sequence to sequence pretrained model pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs.
+We introduce [BARThez](http://master2-bigdata.polytechnique.fr/FrenchLinguisticResources/barthez), the first french sequence to sequence pretrained model pretrained on 66GB of french raw text for roughly 60 hours on 128 Nvidia V100 GPUs.
 We also introduce the French [Word2vec](http://master2-bigdata.polytechnique.fr/FrenchLinguisticResources/frWordEmbeddings) vectors of dimension 300 that were trained using CBOW on a huge 33GB French raw text that we crawled and pre-processed from the French web.
 
 BARThez: a Skilled Pretrained French Sequence-to-Sequence Model: [https://arxiv.org/abs/2010.12321](https://arxiv.org/abs/2010.12321)<br>
-Evaluation Of Word Embeddings From Large-Scale French Web Content: [https://arxiv.org/abs/2105.01990](https://arxiv.org/abs/2105.01990)
+Evaluation Of Word Embeddings From Large-Scale French Web Content: [https://arxiv.org/abs/2105.01990](https://arxiv.org/abs/2105.01990)<br>
+BARThez github link: [https://github.com/moussaKam/BARThez](https://github.com/moussaKam/BARThez) 
 
 If you are interested in [downloading](http://master2-bigdata.polytechnique.fr/FrenchLinguisticResources/resources) the linguistic resources files please contact the leader of [DaSciM](http://www.lix.polytechnique.fr/dascim/software_datasets/) group via email: mvazirg\~lix.polytechnique.fr <br> 
 This effort is partially funded by the [ANR HELAS chair](http://www.lix.polytechnique.fr/dascim/helas/) 
