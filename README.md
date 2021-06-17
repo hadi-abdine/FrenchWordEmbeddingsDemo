@@ -21,15 +21,15 @@ This UI is built using React, JavaScript, JQuery and Bootstrap.
 ![image](https://drive.google.com/uc?export=view&id=1WAKDKMU5TzaPDIfy15OFkstPiRqNyecq)
 ### Setup
 To install NPM dependencies:
-```ruby
+```
 npm install
 ```
 To install all python dependencies:
-```ruby
+```
 pip3 install -r requirements.txt
 ```
 To run the web app:
-```ruby
+```
 python3 explore.py
 ```
 Make sure to download the [word vectors](http://master2-bigdata.polytechnique.fr/FrenchLinguisticResources/resources) you're interseting in testing under '../word2vec/dascim2.bin'
