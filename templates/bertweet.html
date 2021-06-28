@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}BERTweetFR{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+<br>
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-primary" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+        BERTweetFR
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Overview</h5>
+        <p class="card-text" align="justify">
+            BBERTweetFR is the first pre-trained large scale language model adapted to French tweets. It is initialized
+            with CamemBERT, the state-of-art general-domain language model for French based on the RoBERTa architecture.
+            We perform domain-adaptive pre-training on 182M deduplicated tweets. The training runs for roughly 20 hours
+            on 8 Nvidia V100 GPUs (32GB each) using the CNRS <a
+                href="http://www.idris.fr/annonces/annonce-jean-zay-eng.html">
+            Jean Zay supercomputer</a>. We evaluated BERTweetFR on three downstream Twitter analytic tasks including
+            offensiveness classification, named entity recognition and unsupervised semantic shift detection, all
+            yielding significant improvement compared to general-domain models.<br>
+            Our model is now on HuggingFace : <a
+                href="https://huggingface.co/Yanzhu/bertweetfr-base">BERTweetFR</a><br>
+            You can also <a
+                href="/FrenchLinguisticResources/resources#bertweetfr">download</a> the fine-tuned ones for
+            offensiveness classification and NER.<br><br>
+
+            Below are a few for your initial tests. To see the results you have to write your input text first
+            and then press submit.<br><br>
+
+            This effort is partially funded by the <a href='http://www.lix.polytechnique.fr/dascim/helas/'>ANR HELAS
+            chair</a>
+
+        </p>
+
+
+    </div>
+</div>
+
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-info" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+        Offensiveness Classification
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"> This tool takes a Twitter post in French and detects whether it is offensive or not.</p>
+
+        <div class="container3" style="align-items: center;" method="POST">
+      <textarea name='text_input5' class="span6 form-control" rows="20" id="text_input5"
+                style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Le confinement c'est vraiment pas bon pour moi je fais tout les jours 1 h de sport intensif  alors que je détestais ça et je mange Healthy que m'arrive t-il ?
+      </textarea>
+            <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+            <div style="width: 18rem;">
+                <div class="col-xs-12 col-sm-12 progress-container">
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success posi2"
+                             style="width:0%; -webkit-transition: none !important; transition: none !important;"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <label style="display: flex; vertical-align: middle;" id="poslabel2">Not Offensive</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 progress-container">
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger negi2"
+                             style="width:0%; -webkit-transition: none !important; transition: none !important;"></div>
+                    </div>
+                    <label style="display: flex; vertical-align: middle;" id="neglabel2">Offensive</label>
+                </div>
+
+            </div>
+            <span class="input-group-addon" style="width: 1rem;">
+        <!-- <p>&#x2192;</p> -->
+      </span>
+
+        </div>
+        <br>
+        <div>
+            <input class="btn btn-success get_off_label" type="submit" value="submit" id='get_off_label'
+                   style="position: absolute; right: 10%;"><br><br>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3 mx-auto" style="max-width: 80%; border-radius: 25px">
+    <div class="card-header text-white bg-danger" style="border-top-right-radius: 25px; border-top-left-radius: 25px">
+        Named-Entity-Recognition (NER)
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"> This tool takes a Twitter post in French and marks out the named entities in the post.
+            There are 13 possible entity types : person, musicartist, organisation, geoloc, product, transportLine,
+            media, sportsteam, event, tvshow, movie, facility and other.<br>
+            Outputs are in the IOB format. The prefix “B-”is added before an entity type for a word that is the first
+            one in an entity. “I-” is added for all words that are not the first word.</p>
+
+        <div class="container3" style="align-items: center;">
+            <textarea name='text_input6' class="span6 form-control" rows="20" id="text_input6"
+                      style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">🇫🇷 FLASH - Les métropoles où le taux d'incidence #COVID19 est &gt; à 400/100 000 habitants :  - Saint Etienne 962,6 - Lille 806,6 - Lyon 721 - Grenoble 619,4 - Clermont 449 - Aix/Marseille 437,7 - Grand #Paris 426,4 - Toulouse 419,8 - Strasbourg 408,6  #COVID19france
+            </textarea>
+
+            <textarea class="span6 form-control dcopy" rows="10" placeholder=""
+                      style="height:140px;max-width: 25rem;width: 18rem;" id="nerres">
+
+            </textarea>
+        </div>
+
+        <br>
+        <div>
+            <input class="btn btn-success get_ner" type="submit" value="submit" id='get_ner'
+                   style="position: absolute; right: 10%;"><br><br>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='JQuery.js') }}"></script>
+<script src="{{ url_for('static', filename='flaskJQueriesb31.js') }}"></script>
+{% endblock %}
