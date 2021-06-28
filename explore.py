@@ -5,8 +5,11 @@ import cherrypy
 from cherrypy.lib.static import serve_file
 from explorer import Model
 from run import app as myflask
+import argparse
 
-
+parse = argparse.ArgumentParser()
+parse.add_argument('--ip', type=str, default='127.0.0.1')
+args = parse.parse_args()
 STATIC_DIR = os.path.dirname(os.path.realpath(__file__)) + '/static'
 CACHE = {}
 
@@ -65,10 +68,16 @@ class AppController(object):
     def index(self, **kw):
         return serve_file(STATIC_DIR + '/indexss.html', "text/html")
 
+# def secureheaders():
+#     headers = cherrypy.response.headers
+#     headers['X-Frame-Options'] = 'DENY'
+#     headers['X-XSS-Protection'] = '1; mode=block'
+#     headers['Content-Security-Policy'] = "default-src='self'"
 
 if __name__ == '__main__':
     
     cherrypy.config.update({
+                            'server.socket_host': args.ip,
                             'server.socket_port': 8080,
                             'engine.autoreload.on': True,
                             })
@@ -92,8 +101,6 @@ if __name__ == '__main__':
         }
 
     })
-    
-
     
     cherrypy.engine.start()
     

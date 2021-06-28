@@ -43256,6 +43256,15 @@
                   ),
                   React.createElement(
                     'li',
+                    { className: 'bertweetFr'},
+                    React.createElement(
+                        'a',
+                        {Class: 'navbar-brand', href: '/FrenchLinguisticResources/bertweetFr'},
+                        'BERTweet'
+                    )
+                  ),
+                  React.createElement(
+                    'li',
                     { className: 'frWordEmbeddings'},
                     React.createElement(
                         'a',

@@ -311,7 +311,7 @@ $(document).ready(function() {
                 width: data.n
                 }, 2500);
             $("#poslabel").text("Positive".concat(" : ", data.p));
-            $("#neglabel").text("Negative".concat(" : ", data.n));              
+            $("#neglabel").text("Negative".concat(" : ", data.n));
         });
     });
 
@@ -357,4 +357,53 @@ $(document).ready(function() {
         });
     });
 
+
+
+    $('.get_off_label').on('click', function() {
+
+        var text_input = $('#text_input5').val();
+        req = $.ajax({
+            url : '/FrenchLinguisticResources/bertweetOff',
+            type : 'POST',
+            data : JSON.stringify({fullText : text_input}),
+            error: function(e) {
+                console.log(e);
+            },
+            dataType: "json",
+            contentType: "application/json",
+        });
+
+        req.done(function(data) {
+            $(".posi2").animate({
+                width: data.p
+              }, 2500);
+            $(".negi2").animate({
+                width: data.n
+                }, 2500);
+            $("#poslabel2").text("Not Offensive".concat(" : ", data.p));
+            $("#neglabel2").text("Offensive".concat(" : ", data.n));
+        });
+    });
+
+     $('.get_ner').on('click', function(e) {
+
+        var text_input = $('#text_input6').val();
+
+        req = $.ajax({
+            url : '/FrenchLinguisticResources/bertweetNER',
+            type : 'POST',
+            data : JSON.stringify({ fullText : text_input}),
+            dataType: "json",
+            contentType: "application/json",
+        });
+
+        req.done(function(data) {
+            $('#nerres').val(data.res);
+        });
+    });
 });
+
+
+
+
+

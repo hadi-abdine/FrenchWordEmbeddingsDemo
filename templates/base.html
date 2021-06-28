@@ -11,104 +11,100 @@
     </title>
 
     <style>
-    *{
-    margin: 0;
-    padding: 0;
-    }
-    .rate {
-        float: left;
-        height: 46px;
-        padding: 0 10px;
-    }
-    .rate > input {
-        position:absolute;
-        display: none;
-        /* top:-9999px; */
-    }
-    .rate > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:30px;
-        color:#ccc;
-    }
-    .rate > label:before {
-        content: '★ ';
-    }
-    /* .rate > input:checked ~ label {
-        color: #ffc700;    
-    } */
+        *{
+        margin: 0;
+        padding: 0;
+        }
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+        .rate > input {
+            position:absolute;
+            display: none;
+            /* top:-9999px; */
+        }
+        .rate > label {
+            float:right;
+            width:1em;
+            overflow:hidden;
+            white-space:nowrap;
+            cursor:pointer;
+            font-size:30px;
+            color:#ccc;
+        }
+        .rate > label:before {
+            content: '★ ';
+        }
+        /* .rate > input:checked ~ label {
+            color: #ffc700;
+        } */
 
 
-    .rate > label:hover,
-    .rate > label:hover ~ label {
-        color: #deb217;  
-    } 
+        .rate > label:hover,
+        .rate > label:hover ~ label {
+            color: #deb217;
+        }
 
-    /* .rate > input:checked + label:hover,
-    .rate > input:checked + label:hover ~ label,
-    .rate > input:checked ~ label:hover,
-    .rate > input:checked ~ label:hover ~ label, */
-    /* .rate > label:hover ~ input:checked ~ label { */
-        /* color: #c59b08; */
-        /* color: #deb217;  */
-    /* } */
+        /* .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label, */
+        /* .rate > label:hover ~ input:checked ~ label { */
+            /* color: #c59b08; */
+            /* color: #deb217;  */
+        /* } */
 
-    .container {
-      display: grid;
-      grid-gap: 5px;
-      grid-template-columns: repeat(auto-fit, 250px 10px);
-      grid-template-rows: repeat(auto-fit, 150px);
-    }
+        .container {
+          display: grid;
+          grid-gap: 5px;
+          grid-template-columns: repeat(auto-fit, 250px 10px);
+          grid-template-rows: repeat(auto-fit, 150px);
+        }
 
-    .container2 {
-      display: grid;
-      grid-gap: 5px;
-      grid-template-columns: repeat(auto-fit, 50px);
-      grid-template-rows: repeat(auto-fit, 80px);
-    }
+        .container2 {
+          display: grid;
+          grid-gap: 5px;
+          grid-template-columns: repeat(auto-fit, 50px);
+          grid-template-rows: repeat(auto-fit, 80px);
+        }
 
-    .container3 {
-      display: flex;
-      /* margin-left: 12%; */
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+        .container3 {
+          display: flex;
+          /* margin-left: 12%; */
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
 
-    
 
-    /* .progress.active .progress-bar {
-        -webkit-transition: none !important;
-        transition: none !important;
-    } */
+
+        /* .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        } */
 
     </style>
+
     {% block script %}
     <script type="text/javascript">
 
-    // Wait for the page to load first
-    window.onload = function () {
+        // Wait for the page to load first
+        window.onload = function () {
+        }
 
-    }
-
-
-    // $(document).ready(function() {
-    //     $( ".mr-auto .nav-item" ).bind( "click", function(event) {
-    //         event.preventDefault();
-    //         var clickedItem = $( this );
-    //         $( ".mr-auto .nav-item" ).each( function() {
-    //             $( this ).removeClass( "active" );
-    //         });
-    //         clickedItem.addClass( "active" );
-    //     });
-    // });
-
-
-
+        // $(document).ready(function() {
+        //     $( ".mr-auto .nav-item" ).bind( "click", function(event) {
+        //         event.preventDefault();
+        //         var clickedItem = $( this );
+        //         $( ".mr-auto .nav-item" ).each( function() {
+        //             $( this ).removeClass( "active" );
+        //         });
+        //         clickedItem.addClass( "active" );
+        //     });
+        // });
 
     </script>
     {% endblock %}
@@ -130,6 +126,10 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="/FrenchLinguisticResources/barthez">BARThez<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/FrenchLinguisticResources/bertweetFr">BERTweetFR<span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">

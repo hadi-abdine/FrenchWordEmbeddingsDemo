@@ -40,8 +40,6 @@
             chair</a>
 
         </p>
-
-
     </div>
 </div>
 
@@ -51,12 +49,17 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text"> This tool takes as input a text (limited to 512 tokens) in French (left box) and produces an abstractive summary (right box) using <a
-                href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
+        <p class="card-text"> This tool takes as input a text (limited to 512 tokens) in French (left box) and produces
+            an abstractive summary (right box) using <a
+                    href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
 
         <div class="container3" style="align-items: center;">
         <textarea name='text_input1' class="span6 form-control" rows="20" id="text_input1"
-                  style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux</textarea>
+                  style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">
+            Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de
+            Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La
+            mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux
+        </textarea>
 
             <textarea class="span6 form-control dcopy" rows="10" placeholder="Abstract"
                       style="height:140px;max-width: 25rem;width: 18rem;" id="abstract_output"></textarea>
@@ -92,16 +95,25 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">This tool takes as input a text (limited to 512 tokens) in French (left box) and produces a title (right box) using <a
-                href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.</p>
+        <p class="card-text">
+            This tool takes as input a text (limited to 512 tokens) in French (left box) and produces a
+            title (right box) using <a
+                href="/FrenchLinguisticResources/resources#barthez">BARThez</a>.
+        </p>
 
         <div class="container3" style="align-items: center;" method="POST">
-      <textarea name='text_input2' class="span6 form-control" rows="20" id="text_input2"
-                style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux</textarea>
+            <textarea name='text_input2' class="span6 form-control" rows="20" id="text_input2"
+                    style="height:140px;max-width: 25rem;width: 18rem; left: 50%;">
+              Citant les préoccupations de ses clients dénonçant des cas de censure après la suppression du compte de
+              Trump, un fournisseur d'accès Internet de l'État de l'Idaho a décidé de bloquer Facebook et Twitter. La
+              mesure ne concernera cependant que les clients mécontents de la politique de ces réseaux sociaux
+            </textarea>
 
             <textarea class="span6 form-control" rows="10" placeholder="Title"
                       style="height:140px;max-width: 25rem;width: 18rem;" id="title_output"
-                      name="title_output"></textarea>
+                      name="title_output">
+            </textarea>
+
             <div class="ratingTitle" style="display: none;"><label>Please rate this title</label> <br>
                 <div class="rate">
                     <input type="radio" id="star5t" name="rate" value="5"/>
